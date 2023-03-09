@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: accountingSys
+-- Host: localhost    Database: accountingsys
 -- ------------------------------------------------------
 -- Server version	10.4.24-MariaDB
 
@@ -27,7 +27,10 @@ CREATE TABLE `departments` (
   `dept_Name` varchar(10) NOT NULL,
   `dept_Desc` varchar(30) NOT NULL,
   `dept_Bal` decimal(8,2) NOT NULL,
-  PRIMARY KEY (`dept_ID`)
+  `employee_NO` tinyint(4) NOT NULL,
+  PRIMARY KEY (`dept_ID`),
+  KEY `employee_NO` (`employee_NO`),
+  CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`employee_NO`) REFERENCES `employee` (`employee_NO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,6 +41,32 @@ CREATE TABLE `departments` (
 LOCK TABLES `departments` WRITE;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee` (
+  `employee_NO` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `employee_Name` varchar(15) NOT NULL,
+  `Job` varchar(12) DEFAULT NULL,
+  `Age` tinyint(2) DEFAULT NULL,
+  `Salary` decimal(8,2) DEFAULT NULL,
+  PRIMARY KEY (`employee_NO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee`
+--
+
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -78,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-07 13:03:55
+-- Dump completed on 2023-03-09 12:11:51
