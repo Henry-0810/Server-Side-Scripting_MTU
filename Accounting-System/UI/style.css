@@ -1,0 +1,71 @@
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #555;
+}
+
+#addForm {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

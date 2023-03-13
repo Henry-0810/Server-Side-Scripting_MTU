@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Form</title>
+  <style>
+    #myForm {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<button id="showFormButton">Show Form</button>
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+  <button type="submit">Submit</button>
+</form>
+<script>
+  const showFormButton = document.getElementById('showFormButton');
+  const myForm = document.getElementById('myForm');
+
+  showFormButton.addEventListener('click', function() {
+    myForm.style.display = 'block';
+  });
+</script>
+</body>
+</html>
