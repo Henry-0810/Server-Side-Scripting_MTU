@@ -4,6 +4,12 @@ h1 {
     margin-bottom: 30px;
 }
 
+p {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
 nav {
     background-color: #333;
 }

@@ -13,6 +13,24 @@
 
 <form id="addForm" action="SQL_Queries.php" method="post">
     <label for="name">Name:</label>
+    <input type="text" id="addName" name="addName" required>
+    <br>
+    <label for="job">Job:</label>
+    <input type="text" id="addJob" name="addJob" required>
+    <br>
+    <label for="age">Age:</label>
+    <input type="text" id="addAge" name="addAge" required>
+    <br>
+    <label for="salary">Salary:</label>
+    <input type="text" id="addSalary" name="addSalary" required>
+    <br>
+    <button class="back">Back</button>
+    <button type="submit" name="addSubmit">Submit</button>
+</form>
+
+<form id="updForm" action="SQL_Queries.php" method="post">
+    <p>Search by Employee number or name</p>
+    <label for="name">Name:</label>
     <input type="text" id="name" name="addName" required>
     <br>
     <label for="job">Job:</label>
