@@ -6,7 +6,7 @@ h1 {
 
 p {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -36,7 +36,7 @@ nav li a:hover {
     background-color: #555;
 }
 
-#addForm {
+#addForm, #updForm {
     display: none;
     background-color: #333;
     color: #fff;
@@ -59,6 +59,22 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+select {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+option {
+    background-color: #555;
+    color: #fff;
+}
+
 button {
     background-color: #fff;
     color: #333;
@@ -74,4 +90,10 @@ button[type="submit"] {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+p.select-employee {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
 }
