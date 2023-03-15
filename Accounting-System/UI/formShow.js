@@ -4,6 +4,7 @@ const rmvBtn = document.getElementById("remove");
 const addForm = document.getElementById("addForm");
 const updForm = document.getElementById("updForm");
 const backBtn = document.querySelectorAll(".back");
+const selectEmployee = document.getElementById("employeeNo");
 
 addBtn.addEventListener('click',
     function () {
@@ -22,6 +23,13 @@ for (let i = 0; i < backBtn.length; i++) {
             updForm.style.display = 'none';
         });
 }
+
+selectEmployee.addEventListener('change',
+    function(){
+    document.getElementById("updEmployeeContents").style.display = 'block';
+    });
+
+
 
 
 

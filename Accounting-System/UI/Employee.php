@@ -11,7 +11,7 @@
 <button id="update">Update Employee</button>
 <button id="remove">Remove Employee</button>
 
-<form id="addForm" action="SQL_Queries.php" method="post">
+<form id="addForm" action="addEmployee.php" method="post">
     <p>Add Employees</p>
     <label for="addName">Name:</label>
     <input type="text" id="addName" name="addName" required>
@@ -29,24 +29,33 @@
     <button type="submit" name="addSubmit">Add</button>
 </form>
 
-<form id="updForm" action="SQL_Queries.php" method="post">
+<?php include 'updateEmployee.php';
+if (isset($_POST['employeeNo'])) {
+    $employeeNo = $_POST['employeeNo'];
+    $employeeInfo = getEmployeeInfo($employeeNo);
+}
+?>
+<form id="updForm" action="updateEmployee.php" method="post">
     <p>Update Employees</p>
     <label for="employeeNo">Select employee No</label>
     <select id="employeeNo" name="employeeNo">
-        <?php include 'FuncCalling.php'; ?>
+        <option disabled="disabled" selected="selected" style="display:none; value="">Choose an Employee Number</option>
+        <?php getEmployeeNo(); ?>
     </select>
     <div id="updEmployeeContents" style="display: none">
+        <?php if(isset($employeeInfo)){ ?>
         <label for="updJob">Job:</label>
-        <input type="text" id="updJob" name="updJob" required>
+        <input type="text" id="updJob" name="updJob" value = "<?php echo $employeeInfo['Job']; ?>" required>
         <br>
         <label for="updAge">Age:</label>
-        <input type="text" id="updAge" name="updAge" required>
+        <input type="text" id="updAge" name="updAge" value = "<?php echo $employeeInfo['Age']; ?>" required>
         <br>
         <label for="updSalary">Salary:</label>
-        <input type="text" id="updSalary" name="updSalary" required>
+        <input type="text" id="updSalary" name="updSalary" value = "<?php echo $employeeInfo['Salary']; ?>" required>
         <br>
         <button class="back">Back</button>
         <button type="submit" name="updSubmit">Update</button>
+        <?php } ?>
     </div>
 </form>
 </body>

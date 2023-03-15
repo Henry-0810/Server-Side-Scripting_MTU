@@ -1,3 +1,3 @@
 <?php
-include 'SQL_Queries.php';
+include 'db_Connect.php';
 getEmployeeNo();
