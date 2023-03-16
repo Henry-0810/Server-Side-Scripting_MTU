@@ -36,13 +36,16 @@ $('document').ready(function() {
 function getSelectedValue(){
     let selected = $('#employeeNo').val();
     $.ajax({
-        url: 'Employee.php',
+        url: 'updateEmployee.php',
         type: 'POST',
         dataType: 'json',
         data: {selected: selected},
-        success: function(data){
-            $('#updEmployeeContents').style.display = 'block';
-            console.log(data);
+        success: function(response){
+            $('#updEmployeeContents').html(response).show();
+            console.log(response);
+        },
+        error: function (){
+            alert('error');
         }
     });
 }
