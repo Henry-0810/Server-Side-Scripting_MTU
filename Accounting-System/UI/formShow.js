@@ -29,6 +29,24 @@ selectEmployee.addEventListener('change',
     document.getElementById("updEmployeeContents").style.display = 'block';
     });
 
+$('document').ready(function() {
+    $('#employeeNo').on('change', getSelectedValue);
+});
+
+function getSelectedValue(){
+    let selected = $('#employeeNo').val();
+    $.ajax({
+        url: 'Employee.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {selected: selected},
+        success: function(data){
+            $('#updEmployeeContents').style.display = 'block';
+            console.log(data);
+        }
+    });
+}
+
 
 
 

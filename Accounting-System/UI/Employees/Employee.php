@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee</title>
-    <script src="formShow.js" async></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="../formShow.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <button id="add">Add Employee</button>
@@ -29,12 +30,7 @@
     <button type="submit" name="addSubmit">Add</button>
 </form>
 
-<?php include 'updateEmployee.php';
-if (isset($_POST['employeeNo'])) {
-    $employeeNo = $_POST['employeeNo'];
-    $employeeInfo = getEmployeeInfo($employeeNo);
-}
-?>
+<?php include 'updateEmployee.php'; ?>
 <form id="updForm" action="updateEmployee.php" method="post">
     <p>Update Employees</p>
     <label for="employeeNo">Select employee No</label>
@@ -43,19 +39,7 @@ if (isset($_POST['employeeNo'])) {
         <?php getEmployeeNo(); ?>
     </select>
     <div id="updEmployeeContents" style="display: none">
-        <?php if(isset($employeeInfo)){ ?>
-        <label for="updJob">Job:</label>
-        <input type="text" id="updJob" name="updJob" value = "<?php echo $employeeInfo['Job']; ?>" required>
-        <br>
-        <label for="updAge">Age:</label>
-        <input type="text" id="updAge" name="updAge" value = "<?php echo $employeeInfo['Age']; ?>" required>
-        <br>
-        <label for="updSalary">Salary:</label>
-        <input type="text" id="updSalary" name="updSalary" value = "<?php echo $employeeInfo['Salary']; ?>" required>
-        <br>
-        <button class="back">Back</button>
-        <button type="submit" name="updSubmit">Update</button>
-        <?php } ?>
+        <?php getEmployeeInfo($_POST['employeeNo']); ?>
     </div>
 </form>
 </body>
