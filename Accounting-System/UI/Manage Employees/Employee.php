@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee</title>
-    <script src="../formShow.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -39,8 +38,8 @@
         <?php getEmployeeNo(); ?>
     </select>
     <div id="updEmployeeContents" style="display: none">
-        <?php getEmployeeInfo($_POST['employeeNo']); ?>
     </div>
 </form>
+<script src="../formShow.js"></script>
 </body>
 </html>

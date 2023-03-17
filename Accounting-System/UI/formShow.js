@@ -4,51 +4,61 @@ const rmvBtn = document.getElementById("remove");
 const addForm = document.getElementById("addForm");
 const updForm = document.getElementById("updForm");
 const backBtn = document.querySelectorAll(".back");
-const selectEmployee = document.getElementById("employeeNo");
 
 addBtn.addEventListener('click',
     function () {
-    addForm.style.display = 'block';
-});
+        addForm.style.display = 'block';
+    });
 
 updBtn.addEventListener('click',
-    function (){
-    updForm.style.display = 'block'
-});
+    function () {
+        updForm.style.display = 'block'
+    });
 
 for (let i = 0; i < backBtn.length; i++) {
     backBtn[i].addEventListener('click',
-        function() {
+        function () {
             addForm.style.display = 'none';
             updForm.style.display = 'none';
         });
 }
 
-selectEmployee.addEventListener('change',
-    function(){
-    document.getElementById("updEmployeeContents").style.display = 'block';
-    });
-
-$('document').ready(function() {
+$('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
 });
 
-function getSelectedValue(){
-    let selected = $('#employeeNo').val();
-    $.ajax({
-        url: 'updateEmployee.php',
-        type: 'POST',
-        dataType: 'json',
-        data: {selected: selected},
-        success: function(response){
-            $('#updEmployeeContents').html(response).show();
-            console.log(response);
-        },
-        error: function (){
-            alert('error');
-        }
-    });
+function getSelectedValue() {
+    let employeeNo = $(this).val();
+    if (employeeNo !== '') {
+        $.ajax({
+            url: 'updateEmployee.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                employeeNo: employeeNo
+            },
+            success: function (response) {
+                console.log(response);
+                let htmlString = "";
+                htmlString += "<label for='updJob'>Job:</label>";
+                htmlString += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
+                htmlString += "<label for='updAge'>Age:</label>";
+                htmlString += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
+                htmlString += "<label for='updSalary'>Salary:</label>";
+                htmlString += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
+                htmlString += "<button class='back'>Back</button>";
+                htmlString += "<button type='submit' name='updSubmit'>Update</button>";
+                $('#updEmployeeContents').html(htmlString).show();
+            },
+            error: function (xhr, status, error) {
+                console.log('Error',error);
+            }
+        });
+    } else {
+        $('#updEmployeeContents').html('').hide();
+    }
 }
+
 
 
 

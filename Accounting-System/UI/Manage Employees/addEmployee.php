@@ -11,27 +11,22 @@ if(isset($_POST['addSubmit'])){
         if(!preg_match("/^[a-zA-Z\s]+$/", $name)) {
             $error_msg .= "Invalid Name";
         }
-        if($age < 18 || $age > 65) {
-            $error_msg .= "Age should be between 18 and 65";
-        }
-        if($salary < 3500) {
-            $error_msg .= "Salary should be greater than 3500";
+
+        if(validateEmployeeInputs($age,$salary) != "All inputs correct!"){
+            $error_msg .= validateEmployeeInputs($age,$salary);
         }
 
         if(empty($error_msg)) {
 
             $pdo = db_connect();
 
-            $sql = "INSERT INTO employee (employee_Name,Job, Age, Salary) VALUES(:name, :job, :age, :salary)";
+            $sql = "INSERT INTO employee (employee_Name,Job, Age, Salary) VALUES(?, ?, ?, ?)";
 
             $stmt = $pdo->prepare($sql);
 
-            $stmt->bindValue(':name', $name);
-            $stmt->bindValue(':job', $job);
-            $stmt->bindValue(':age', $age);
-            $stmt->bindValue(':salary', $salary);
+            $values = array($name,$job,$age,$salary);
 
-            $stmt->execute();
+            $stmt->execute($values);
 
             $data = nl2br("Employee name: ".$name."\\nJob: ".$job."\\nAge: ".$age."\\nSalary: ".$salary.
                 "\\nSuccessfully added to database!!!");
