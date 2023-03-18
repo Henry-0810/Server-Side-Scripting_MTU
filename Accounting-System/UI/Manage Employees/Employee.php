@@ -34,11 +34,18 @@
     <p>Update Employees</p>
     <label for="employeeNo">Select employee No</label>
     <select id="employeeNo" name="employeeNo">
-        <option disabled="disabled" selected="selected" style="display:none; value="">Choose an Employee Number</option>
+        <option disabled="disabled" selected="selected" style="display:none;" value="">Choose an Employee Number</option>
         <?php getEmployeeNo(); ?>
     </select>
     <div id="updEmployeeContents" style="display: none">
     </div>
+</form>
+
+<form id="rmvForm" action="removeEmployee.php" method="post">
+    <p>Remove Employee</p>
+    <table>
+        <tr><th>Employee No</th><th>Employee Name</th><th>Job</th><th>Age</th><th>Salary</th><th>Choose</th></tr>
+    </table>
 </form>
 <script src="../formShow.js"></script>
 </body>

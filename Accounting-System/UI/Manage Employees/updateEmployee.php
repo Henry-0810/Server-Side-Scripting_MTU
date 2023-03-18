@@ -38,6 +38,7 @@ function getEmployeeInfo($employeeNo): array
             'salary' => $row['Salary']
         ];
     }
+
     return $employeeInfo;
 }
 
@@ -49,7 +50,9 @@ function getEmployeeName($employeeNo){
     $stmt->execute(array($employeeNo));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $result['employee_Name'];
+    $name = $result['employee_Name'];
+    $pdo= null;
+    return $name;
 }
 
 if(isset($_POST['employeeNo'])){
@@ -86,6 +89,7 @@ if(isset($_POST['updSubmit'])){
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: ".
             $name ."\\nJob: ".$employeeInfo['job']."\\nAge: ".$employeeInfo['age']."\\nSalary: ".$employeeInfo['salary']);
 
+        $pdo=null;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     }
     else{
