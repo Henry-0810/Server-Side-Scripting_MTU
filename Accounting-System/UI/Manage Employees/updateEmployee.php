@@ -1,5 +1,6 @@
 <?php
 include '../db_Connect.php';
+
 function getEmployeeNo(): void
 {
     $pdo = db_Connect();
@@ -40,6 +41,17 @@ function getEmployeeInfo($employeeNo): array
     return $employeeInfo;
 }
 
+function getEmployeeName($employeeNo){
+    $pdo = db_connect();
+    $sql = "SELECT employee_Name FROM employee WHERE employee_NO = ?";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array($employeeNo));
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['employee_Name'];
+}
+
 if(isset($_POST['employeeNo'])){
     $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
     echo json_encode($employeeInfo);
@@ -47,11 +59,10 @@ if(isset($_POST['employeeNo'])){
 
 $errorMsg = "";
 if(isset($_POST['updSubmit'])){
-$job = $_POST['updJob'];
-$age = $_POST['updAge'];
-$salary = $_POST['updSalary'];
-$error_msg = '';
-
+    $job = $_POST['updJob'];
+    $age = $_POST['updAge'];
+    $salary = $_POST['updSalary'];
+    $error_msg = '';
 
     if($job == ''){
         $errorMsg .= "Job is empty!";
@@ -65,26 +76,21 @@ $error_msg = '';
         $pdo = db_connect();
 
         $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ? WHERE employee_NO = ?";
-
         $stmt = $pdo->prepare($sql);
-
         $values = array($job,$age,$salary,$_POST['employeeNo']);
-
         $stmt->execute($values);
 
-        if($result = $stmt->fetchAll()){
-            $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name:".
-                $result['employee_Name'] ."\\nJob: ".$result['Job']."\\nAge: ".$result['Age']."\\nSalary: ".
-                $result['Salary']);
+        $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
 
-            echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
-        }
+        $name = getEmployeeName($_POST['employeeNo']);
+        $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: ".
+            $name ."\\nJob: ".$employeeInfo['job']."\\nAge: ".$employeeInfo['age']."\\nSalary: ".$employeeInfo['salary']);
+
+        echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     }
     else{
         echo "<script>alert('$error_msg'); window.history.back(); </script>";
     }
-
-
 }
 
 

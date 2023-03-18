@@ -8,11 +8,13 @@ const backBtn = document.querySelectorAll(".back");
 addBtn.addEventListener('click',
     function () {
         addForm.style.display = 'block';
+        updForm.style.display = 'none';
     });
 
 updBtn.addEventListener('click',
     function () {
-        updForm.style.display = 'block'
+        updForm.style.display = 'block';
+        addForm.style.display = 'none';
     });
 
 for (let i = 0; i < backBtn.length; i++) {
