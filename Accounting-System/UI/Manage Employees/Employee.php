@@ -46,6 +46,7 @@
     <table>
         <tr><th>Employee No</th><th>Employee Name</th><th>Job</th><th>Age</th><th>Salary</th><th>Choose</th></tr>
     </table>
+    <button class="back">Back</button>
 </form>
 <script src="../formShow.js"></script>
 </body>

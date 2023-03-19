@@ -3,17 +3,27 @@ const updBtn = document.getElementById("update");
 const rmvBtn = document.getElementById("remove");
 const addForm = document.getElementById("addForm");
 const updForm = document.getElementById("updForm");
+const rmvForm = document.getElementById("rmvForm");
 const backBtn = document.querySelectorAll(".back");
 
 addBtn.addEventListener('click',
     function () {
         addForm.style.display = 'block';
         updForm.style.display = 'none';
+        rmvForm.style.display = 'none';
     });
 
 updBtn.addEventListener('click',
     function () {
         updForm.style.display = 'block';
+        addForm.style.display = 'none';
+        rmvForm.style.display = 'none';
+    });
+
+rmvBtn.addEventListener('click',
+    function () {
+        rmvForm.style.display = 'block';
+        updForm.style.display = 'none';
         addForm.style.display = 'none';
     });
 
@@ -22,6 +32,7 @@ for (let i = 0; i < backBtn.length; i++) {
         function () {
             addForm.style.display = 'none';
             updForm.style.display = 'none';
+            rm
         });
 }
 
