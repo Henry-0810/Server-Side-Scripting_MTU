@@ -66,7 +66,6 @@ if(isset($_POST['updSubmit'])) {
     $job = $_POST['updJob'];
     $age = $_POST['updAge'];
     $salary = $_POST['updSalary'];
-    $error_msg = '';
 
     if ($job == '') {
         $errorMsg .= "Job is empty!";
@@ -93,7 +92,7 @@ if(isset($_POST['updSubmit'])) {
         $pdo = null;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     } else {
-        echo "<script>alert('$error_msg'); window.history.back(); </script>";
+        echo "<script>alert('$errorMsg'); window.history.back(); </script>";
     }
 }
 

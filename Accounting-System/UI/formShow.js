@@ -1,16 +1,36 @@
-const employeeBtns = document.querySelectorAll(".employeeBtn");
+const employeeBtn = document.querySelectorAll(".employeeBtn");
 const employeeForms = document.querySelectorAll(".employeeForm");
 const backBtn = document.querySelectorAll(".back");
 
-for (let i = 0; i < employeeBtns.length; i++) {
-    employeeBtns[i].addEventListener('click',
+for (let i = 0; i < employeeBtn.length; i++) {
+    employeeBtn[i].addEventListener('click',
         function (){
+            for (let j = 0; j < employeeForms.length; j++) {
+                if (j !== i) {
+                    employeeForms[j].style.display = 'none';
+                }
+            }
         employeeForms[i].style.display = 'block';
     })
 }
+
 $('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
 });
+
+// $('#rmvForm').on('submit', confirmDialog);
+//
+// function confirmDialog(){
+//     let result = confirm("Are you sure you want to remove this employee?");
+//     if (!result) {
+//         alert("Employee removal cancelled!");
+//         window.location.back();
+//     }
+//     else{
+//         alert("Employee removed successfully!");
+//         window.location.href = "Employee.php";
+//     }
+// }
 
 function getSelectedValue() {
     let employeeNo = $(this).val();
