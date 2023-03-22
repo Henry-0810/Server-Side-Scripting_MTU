@@ -1,41 +1,13 @@
-const addBtn = document.getElementById("add");
-const updBtn = document.getElementById("update");
-const rmvBtn = document.getElementById("remove");
-const addForm = document.getElementById("addForm");
-const updForm = document.getElementById("updForm");
-const rmvForm = document.getElementById("rmvForm");
+const employeeBtns = document.querySelectorAll(".employeeBtn");
+const employeeForms = document.querySelectorAll(".employeeForm");
 const backBtn = document.querySelectorAll(".back");
 
-addBtn.addEventListener('click',
-    function () {
-        addForm.style.display = 'block';
-        updForm.style.display = 'none';
-        rmvForm.style.display = 'none';
-    });
-
-updBtn.addEventListener('click',
-    function () {
-        updForm.style.display = 'block';
-        addForm.style.display = 'none';
-        rmvForm.style.display = 'none';
-    });
-
-rmvBtn.addEventListener('click',
-    function () {
-        rmvForm.style.display = 'block';
-        updForm.style.display = 'none';
-        addForm.style.display = 'none';
-    });
-
-for (let i = 0; i < backBtn.length; i++) {
-    backBtn[i].addEventListener('click',
-        function () {
-            addForm.style.display = 'none';
-            updForm.style.display = 'none';
-            rm
-        });
+for (let i = 0; i < employeeBtns.length; i++) {
+    employeeBtns[i].addEventListener('click',
+        function (){
+        employeeForms[i].style.display = 'block';
+    })
 }
-
 $('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
 });
@@ -59,8 +31,6 @@ function getSelectedValue() {
                 htmlString += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
                 htmlString += "<label for='updSalary'>Salary:</label>";
                 htmlString += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
-                htmlString += "<button class='back'>Back</button>";
-                htmlString += "<button type='submit' name='updSubmit'>Update</button>";
                 $('#updEmployeeContents').html(htmlString).show();
             },
             error: function (xhr, status, error) {
@@ -70,6 +40,13 @@ function getSelectedValue() {
     } else {
         $('#updEmployeeContents').html('').hide();
     }
+}
+
+for (let i = 0; i < backBtn.length; i++) {
+    backBtn[i].addEventListener('click',
+        function () {
+            window.location.href = "Employee.php";
+        });
 }
 
 

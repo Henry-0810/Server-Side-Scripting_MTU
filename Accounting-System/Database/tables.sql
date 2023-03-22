@@ -52,8 +52,8 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
   `employee_NO` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `employee_Name` varchar(15) NOT NULL,
-  `Job` varchar(12) DEFAULT NULL,
+  `employee_Name` varchar(30) NOT NULL,
+  `Job` varchar(30) DEFAULT NULL,
   `Age` tinyint(2) DEFAULT NULL,
   `Salary` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`employee_NO`)

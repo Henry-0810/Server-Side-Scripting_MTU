@@ -1,5 +1,5 @@
 <?php
-include '../db_Connect.php';
+require_once '../db_Connect.php';
 
 function getEmployeeNo(): void
 {
@@ -39,6 +39,7 @@ function getEmployeeInfo($employeeNo): array
         ];
     }
 
+    $pdo = null;
     return $employeeInfo;
 }
 
@@ -61,38 +62,37 @@ if(isset($_POST['employeeNo'])){
 }
 
 $errorMsg = "";
-if(isset($_POST['updSubmit'])){
+if(isset($_POST['updSubmit'])) {
     $job = $_POST['updJob'];
     $age = $_POST['updAge'];
     $salary = $_POST['updSalary'];
     $error_msg = '';
 
-    if($job == ''){
+    if ($job == '') {
         $errorMsg .= "Job is empty!";
     }
 
-    if(validateEmployeeInputs($age,$salary) != "All inputs correct!"){
-        $errorMsg .= validateEmployeeInputs($age,$salary);
+    if (validateEmployeeInputs($age, $salary) != "All inputs correct!") {
+        $errorMsg .= validateEmployeeInputs($age, $salary);
     }
 
-    if(empty($errorMsg)){
+    if (empty($errorMsg)) {
         $pdo = db_connect();
 
         $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ? WHERE employee_NO = ?";
         $stmt = $pdo->prepare($sql);
-        $values = array($job,$age,$salary,$_POST['employeeNo']);
+        $values = array($job, $age, $salary, $_POST['employeeNo']);
         $stmt->execute($values);
 
         $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
 
         $name = getEmployeeName($_POST['employeeNo']);
-        $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: ".
-            $name ."\\nJob: ".$employeeInfo['job']."\\nAge: ".$employeeInfo['age']."\\nSalary: ".$employeeInfo['salary']);
+        $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: " .
+            $name . "\\nJob: " . $employeeInfo['job'] . "\\nAge: " . $employeeInfo['age'] . "\\nSalary: " . $employeeInfo['salary']);
 
-        $pdo=null;
+        $pdo = null;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
-    }
-    else{
+    } else {
         echo "<script>alert('$error_msg'); window.history.back(); </script>";
     }
 }
