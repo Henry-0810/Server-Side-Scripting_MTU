@@ -74,7 +74,7 @@ function promptDialog() {
     }
     else{
         alert("Employee removal cancelled!");
-        window.location.back();
+        window.location.href = document.referrer;
     }
 }
 
