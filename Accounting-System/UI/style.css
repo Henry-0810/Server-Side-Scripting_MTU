@@ -36,7 +36,7 @@ nav li a:hover {
     background-color: #555;
 }
 
-#addEmpForm, #updEmpForm, #rmvEmpForm, #addDeptForm {
+#addEmpForm, #updEmpForm, #rmvEmpForm, #addDeptForm, #updDeptForm {
     display: none;
     background-color: #333;
     color: #fff;
@@ -84,7 +84,7 @@ button {
     cursor: pointer;
 }
 
-.employeeBack {
+.employeeBack, .deptBack {
     background-color: #fff;
     color: #333;
     border: none;

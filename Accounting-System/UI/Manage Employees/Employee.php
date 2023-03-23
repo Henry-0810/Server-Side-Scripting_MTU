@@ -31,7 +31,7 @@
 
 <?php include 'updateEmployee.php'; ?>
 <form id="updEmpForm" action="updateEmployee.php" method="post" class="employeeForm">
-    <p>Update Employees</p>
+    <p>Update Employees details</p>
     <label for="employeeNo">Select employee No</label>
     <select id="employeeNo" name="employeeNo">
         <option disabled="disabled" selected="selected" style="display:none;" value="">Choose an Employee Number</option>

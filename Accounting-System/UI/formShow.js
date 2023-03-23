@@ -1,6 +1,9 @@
 const employeeBtn = document.querySelectorAll(".employeeBtn");
 const employeeForms = document.querySelectorAll(".employeeForm");
-const backBtn = document.querySelectorAll(".employeeBack");
+const empBackBtn = document.querySelectorAll(".employeeBack");
+const deptBtn = document.querySelectorAll(".deptBtn");
+const deptForms = document.querySelectorAll(".deptForm");
+const deptBackBtn = document.querySelectorAll(".deptBack");
 
 for (let i = 0; i < employeeBtn.length; i++) {
     employeeBtn[i].addEventListener('click',
@@ -48,11 +51,11 @@ function getSelectedValue() {
     }
 }
 
-$("button[name='rmvSubmit']").click(promptDialog);
-
+$("Button[name='rmvBtn']").on('click', promptDialog);
 function promptDialog() {
     console.log("calling this function");
-    let employeeNo = $('rmvEmpNo').val();
+    let employeeData = $('td[data-id="employeeNo"]').text();
+    console.log(employeeData);
     let result = confirm("Are you sure you want to remove this employee?");
     if (result) {
         $.ajax({
@@ -60,29 +63,47 @@ function promptDialog() {
             type: 'POST',
             dataType: 'json',
             data: {
-                employeeData: employeeNo
+                employeeData: employeeData
             },
-            success: function (response) {
-                console.log(response);
-                alert("Employee removed successfully!");
-                window.location.href = "Employee.php";
+            success: function(response) {
+                if (response.success) {
+                    alert("Employee removed successfully!");
+                    window.location.href = "Employee.php";
+                } else {
+                    alert("Failed to remove employee.");
+                }
             },
             error: function (xhr, status, error) {
                 console.log('Error', error);
             }
         });
     }
-    else{
-        alert("Employee removal cancelled!");
-        window.location.href = document.referrer;
-    }
 }
 
 
-for (let i = 0; i < backBtn.length; i++) {
-    backBtn[i].addEventListener('click',
+for (let i = 0; i < empBackBtn.length; i++) {
+    empBackBtn[i].addEventListener('click',
         function () {
             window.location.href = "Employee.php";
+        });
+}
+
+for (let i = 0; i < deptBtn.length; i++) {
+    deptBtn[i].addEventListener('click',
+        function (){
+            for (let j = 0; j < deptForms.length; j++) {
+                if (j !== i) {
+                    deptForms[j].style.display = 'none';
+                }
+            }
+            deptForms[i].style.display = 'block';
+        })
+}
+
+for (let i = 0; i < deptBackBtn.length; i++) {
+    deptBackBtn[i].addEventListener('click',
+        function () {
+            window.location.href = "Department.php";
         });
 }
 
