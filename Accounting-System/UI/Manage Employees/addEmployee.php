@@ -2,10 +2,10 @@
 require_once '../db_Connect.php';
 
 if(isset($_POST['addSubmit'])) {
-    $name = $_POST['addName'];
-    $job = $_POST['addJob'];
-    $age = $_POST['addAge'];
-    $salary = $_POST['addSalary'];
+    $name = $_POST['addEmpName'];
+    $job = $_POST['addEmpJob'];
+    $age = $_POST['addEmpAge'];
+    $salary = $_POST['addEmpSalary'];
     $error_msg = '';
 
     if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {

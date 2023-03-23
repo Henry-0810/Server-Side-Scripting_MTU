@@ -1,6 +1,6 @@
 const employeeBtn = document.querySelectorAll(".employeeBtn");
 const employeeForms = document.querySelectorAll(".employeeForm");
-const backBtn = document.querySelectorAll(".back");
+const backBtn = document.querySelectorAll(".employeeBack");
 
 for (let i = 0; i < employeeBtn.length; i++) {
     employeeBtn[i].addEventListener('click',
@@ -17,20 +17,6 @@ for (let i = 0; i < employeeBtn.length; i++) {
 $('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
 });
-
-// $('#rmvForm').on('submit', confirmDialog);
-//
-// function confirmDialog(){
-//     let result = confirm("Are you sure you want to remove this employee?");
-//     if (!result) {
-//         alert("Employee removal cancelled!");
-//         window.location.back();
-//     }
-//     else{
-//         alert("Employee removed successfully!");
-//         window.location.href = "Employee.php";
-//     }
-// }
 
 function getSelectedValue() {
     let employeeNo = $(this).val();
@@ -61,6 +47,37 @@ function getSelectedValue() {
         $('#updEmployeeContents').html('').hide();
     }
 }
+
+$("button[name='rmvSubmit']").click(promptDialog);
+
+function promptDialog() {
+    console.log("calling this function");
+    let employeeNo = $('rmvEmpNo').val();
+    let result = confirm("Are you sure you want to remove this employee?");
+    if (result) {
+        $.ajax({
+            url: 'removeEmployee.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                employeeData: employeeNo
+            },
+            success: function (response) {
+                console.log(response);
+                alert("Employee removed successfully!");
+                window.location.href = "Employee.php";
+            },
+            error: function (xhr, status, error) {
+                console.log('Error', error);
+            }
+        });
+    }
+    else{
+        alert("Employee removal cancelled!");
+        window.location.back();
+    }
+}
+
 
 for (let i = 0; i < backBtn.length; i++) {
     backBtn[i].addEventListener('click',

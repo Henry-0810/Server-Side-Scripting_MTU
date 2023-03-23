@@ -10,7 +10,7 @@ function getAllEmployees(): void
     $stmt->execute();
 
     while($row = $stmt->fetch()){
-        echo '<tr><td>'.$row['employee_NO'].'</td><td>'.$row['employee_Name'].'</td><td>'.
+        echo '<tr><td id="rmvEmpNo">'.$row['employee_NO'].'</td><td>'.$row['employee_Name'].'</td><td>'.
             $row['Job'].'</td><td>'.$row['Age'].'</td><td>'.$row['Salary'].'</td><td>'.
             '<input type="hidden" name="employeeNo" value="'.$row['employee_NO'].'">'.
             "<button type='submit' name='rmvSubmit' class='delete-btn'>Delete</button></td></tr>";
@@ -19,18 +19,17 @@ function getAllEmployees(): void
     $pdo = null;
 }
 
-function deleteEmployee($employeeNo): void
-{
+if(isset($_POST['rmvSubmit'])){
+    $employeeNo = $_POST['employeeNo'];
+    echo json_encode($employeeNo);
     $pdo = db_connect();
+
     $sql = "DELETE FROM Employee WHERE employee_NO = :employeeNo";
 
     $result = $pdo->prepare($sql);
     $result->bindValue(':employeeNo',$employeeNo);
-
     $result->execute();
 }
 
-if(isset($_POST['rmvSubmit'])){
-    $employeeNo = $_POST['employeeNo'];
-    deleteEmployee($employeeNo);
-}
+
+
