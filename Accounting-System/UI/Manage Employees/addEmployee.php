@@ -1,7 +1,8 @@
 <?php
 require_once '../db_Connect.php';
 
-function getDepartmentName(){
+function getDepartmentName(): void
+{
     $pdo = db_connect();
 
     $sql = "SELECT dept_Name FROM departments";
