@@ -24,13 +24,10 @@ DROP TABLE IF EXISTS `departments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `departments` (
   `dept_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
-  `dept_Name` varchar(10) NOT NULL,
-  `dept_Desc` varchar(30) NOT NULL,
+  `dept_Name` varchar(20) NOT NULL,
+  `dept_Desc` varchar(60) NOT NULL,
   `dept_Bal` decimal(8,2) NOT NULL,
-  `employee_NO` tinyint(4) NOT NULL,
-  PRIMARY KEY (`dept_ID`),
-  KEY `employee_NO` (`employee_NO`),
-  CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`employee_NO`) REFERENCES `employee` (`employee_NO`)
+  PRIMARY KEY (`dept_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,11 +49,14 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
   `employee_NO` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `employee_Name` varchar(30) NOT NULL,
-  `Job` varchar(30) DEFAULT NULL,
-  `Age` tinyint(2) DEFAULT NULL,
-  `Salary` decimal(8,2) DEFAULT NULL,
-  PRIMARY KEY (`employee_NO`)
+  `employee_Name` varchar(20) NOT NULL,
+  `Job` varchar(30) NOT NULL,
+  `Age` tinyint(2) NOT NULL,
+  `Salary` decimal(8,2) NOT NULL,
+  `dept_ID` tinyint(3) NOT NULL,
+  PRIMARY KEY (`employee_NO`),
+  KEY `dept_ID` (`dept_ID`),
+  CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`dept_ID`) REFERENCES `departments` (`dept_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `ledger`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ledger` (
   `ledger_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
-  `ledger_Name` varchar(20) NOT NULL,
+  `ledger_Name` varchar(30) NOT NULL,
   `created_On` datetime NOT NULL,
   `dept_ID` tinyint(3) NOT NULL,
   `amount` decimal(8,2) NOT NULL,
@@ -107,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-09 12:11:51
+-- Dump completed on 2023-03-28 11:21:02

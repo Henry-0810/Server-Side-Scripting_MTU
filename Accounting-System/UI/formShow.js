@@ -33,14 +33,14 @@ function getSelectedValue() {
             },
             success: function (response) {
                 console.log(response);
-                let htmlString = "";
-                htmlString += "<label for='updJob'>Job:</label>";
-                htmlString += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
-                htmlString += "<label for='updAge'>Age:</label>";
-                htmlString += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
-                htmlString += "<label for='updSalary'>Salary:</label>";
-                htmlString += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
-                $('#updEmployeeContents').html(htmlString).show();
+                let details = "";
+                details += "<label for='updJob'>Job:</label>";
+                details += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
+                details += "<label for='updAge'>Age:</label>";
+                details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
+                details += "<label for='updSalary'>Salary:</label>";
+                details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
+                $('#updEmployeeContents').html(details).show();
             },
             error: function (xhr, status, error) {
                 console.log('Error',error);
@@ -106,10 +106,3 @@ for (let i = 0; i < deptBackBtn.length; i++) {
             window.location.href = "Department.php";
         });
 }
-
-
-
-
-
-
-

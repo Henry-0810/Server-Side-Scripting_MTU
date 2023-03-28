@@ -1,7 +1,7 @@
 <?php
 require_once '../db_Connect.php';
 
-function getEmployeeNo(): void
+function getEmployeeDetails(): void
 {
     $pdo = db_Connect();
     $sql = "SELECT employee_NO, employee_Name FROM employee";
@@ -62,7 +62,7 @@ if(isset($_POST['employeeNo'])){
 }
 
 $errorMsg = "";
-if(isset($_POST['updSubmit'])) {
+if(isset($_POST['updEmpSubmit'])) {
     $job = $_POST['updJob'];
     $age = $_POST['updAge'];
     $salary = $_POST['updSalary'];

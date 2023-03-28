@@ -38,6 +38,3 @@ if(isset($_POST['employeeData'])) {
     $response = array('success' => true);
     echo json_encode($response);
 }
-
-
-

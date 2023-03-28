@@ -1,15 +1,32 @@
 <?php
 require_once '../db_Connect.php';
 
-if(isset($_POST['addSubmit'])) {
+function getDepartmentName(){
+    $pdo = db_connect();
+
+    $sql = "SELECT dept_Name FROM departments";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($result as $row){
+        echo "<option value='" . $row['deptName'] . "'>" . $row['deptName'] . "</option>";
+    }
+
+    $pdo = null;
+}
+
+if(isset($_POST['addEmpSubmit'])) {
     $name = $_POST['addEmpName'];
     $job = $_POST['addEmpJob'];
     $age = $_POST['addEmpAge'];
     $salary = $_POST['addEmpSalary'];
     $error_msg = '';
 
-    if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
-        $error_msg .= "Invalid Name";
+    if (validateName($name) != "Input correct") {
+        $error_msg .= validateName($name);
     }
 
     if (validateEmployeeInputs($age, $salary) != "All inputs correct!") {
@@ -30,7 +47,7 @@ if(isset($_POST['addSubmit'])) {
 
         $data = nl2br("Employee name: " . $name . "\\nJob: " . $job . "\\nAge: " . $age . "\\nSalary: " . $salary .
             "\\nSuccessfully added to database!!!");
-
+      echo $data;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     } else {
         echo "<script>alert('$error_msg'); window.history.back(); </script>";

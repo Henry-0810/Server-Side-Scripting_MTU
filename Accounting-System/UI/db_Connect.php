@@ -27,3 +27,11 @@ function validateEmployeeInputs($age,$salary): string
 
     return "All inputs correct!";
 }
+
+function validateName($name): string
+{
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)){
+        return "Invalid Name";
+    }
+    return "Input correct";
+}

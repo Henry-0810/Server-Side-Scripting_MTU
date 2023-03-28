@@ -19,7 +19,7 @@
     <label for="addDeptBal">Department Balance:</label>
     <input type="text" id="addDeptBal" name="addDeptBal" value="0.00">
     <input type='button' class='deptBack' value='Back'>
-    <button type="submit" name="addSubmit">Add</button>
+    <button type="submit" name="addDeptSubmit">Add</button>
 </form>
 
 <form id="updDeptForm" action="updateDepartment.php" method="post" class="deptForm">

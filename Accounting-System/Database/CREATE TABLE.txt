@@ -1,36 +1,33 @@
-DROP TABLE IF EXISTS ledger;
-DROP TABLE IF EXISTS departments;
-DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Ledger;
+DROP TABLE IF EXISTS Employee;
 
-CREATE TABLE employee
-(
-    employee_NO   tinyint(4)  NOT NULL AUTO_INCREMENT,
-    employee_Name varchar(15) NOT NULL,
-    Job           varchar(12),
-    Age           tinyint(2),
-    Salary        decimal(8, 2),
-    PRIMARY KEY (employee_NO)
+CREATE TABLE Departments (
+     dept_ID tinyint(3) NOT NULL AUTO_INCREMENT,
+     dept_Name varchar(20) NOT NULL,
+     dept_Desc varchar(60) NOT NULL,
+     dept_Bal decimal(8,2) NOT NULL,
+     PRIMARY KEY (dept_ID)
 );
 
-CREATE TABLE departments
-(
-    dept_ID     tinyint(3)    NOT NULL AUTO_INCREMENT,
-    dept_Name   varchar(10)   NOT NULL,
-    dept_Desc   varchar(30)   NOT NULL,
-    dept_Bal    decimal(8, 2) NOT NULL,
-    employee_NO tinyint(4)    NOT NULL,
-    PRIMARY KEY (dept_ID),
-    FOREIGN KEY (employee_NO) REFERENCES employee (employee_NO)
+CREATE TABLE Employee (
+    employee_NO tinyint(4) NOT NULL AUTO_INCREMENT,
+    employee_Name varchar(20) NOT NULL,
+    Job varchar(30) NOT NULL,
+    Age tinyint(2) NOT NULL,
+    Salary decimal(8,2) NOT NULL,
+    dept_ID tinyint(3) NOT NULL,
+    PRIMARY KEY (employee_NO),
+    FOREIGN KEY (dept_ID) REFERENCES Departments(dept_ID)
 );
 
-CREATE TABLE ledger
-(
-    ledger_ID        tinyint(3)    NOT NULL AUTO_INCREMENT,
-    ledger_Name      varchar(20)   NOT NULL,
-    created_On       datetime      NOT NULL,
-    dept_ID          tinyint(3)    NOT NULL,
-    amount           decimal(8, 2) NOT NULL,
-    transaction_type enum ('D','C'),
-    PRIMARY KEY (ledger_ID),
-    FOREIGN KEY (dept_ID) REFERENCES departments (dept_ID)
+CREATE TABLE Ledger (
+     ledger_ID tinyint(3) NOT NULL AUTO_INCREMENT,
+     ledger_Name varchar(30) NOT NULL,
+     created_On DATETIME NOT NULL,
+     dept_ID tinyint(3) NOT NULL,
+     amount decimal(8,2) NOT NULL,
+     transaction_type ENUM('D','C'),
+     PRIMARY KEY (ledger_ID),
+     FOREIGN KEY (dept_ID) REFERENCES Departments(dept_ID)
 );
