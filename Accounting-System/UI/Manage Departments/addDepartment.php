@@ -35,9 +35,8 @@ if(isset($_POST['addDeptSubmit'])){
 
         $data = nl2br("Department name: " . $name . "\\nDepartment Description: " . $description . "\\nInitial Balance: " . $balance .
             "\\nSuccessfully added to database!!!");
-        echo $data;
 
-        echo "<script>alert('$data'); window.location.href = 'Department.php'; </script>";
+        echo "<script>alert('$data');  window.location.href = 'Department.php';</script>";
     }
     else{
         echo "<script>alert('$error_msg'); window.history.back(); </script>";

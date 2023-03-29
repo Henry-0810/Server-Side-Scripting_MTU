@@ -22,8 +22,13 @@
     <button type="submit" name="addDeptSubmit">Add</button>
 </form>
 
+<?php include 'updateDepartment.php';?>
 <form id="updDeptForm" action="updateDepartment.php" method="post" class="deptForm">
     <p>Update Department details</p>
+    <label for="deptNo">Select department no</label>
+    <select id="deptNo" name="deptNo">
+        <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
+        <?php getDeptDetails();?>
 </form>
 <script src="../formShow.js"></script>
 </body>

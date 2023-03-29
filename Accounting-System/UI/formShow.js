@@ -21,6 +21,7 @@ $('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
 });
 
+//ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
 function getSelectedValue() {
     let employeeNo = $(this).val();
     if (employeeNo !== '') {
@@ -40,7 +41,31 @@ function getSelectedValue() {
                 details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
                 details += "<label for='updSalary'>Salary:</label>";
                 details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
-                $('#updEmployeeContents').html(details).show();
+                $.ajax({
+                    url: 'getDeptDetails.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (deptDetails){
+                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID'>";
+                        //to test if the 2D php array is successfully parsed
+                        for (let i = 0; i < deptDetails[0].length; i++) {
+                            let output = deptDetails[0][i] + " - " + deptDetails[1][i];
+                            console.log(output);
+                            if(deptDetails[0][i] !== response['dept_ID']){
+                                deptOptions += "<option value='" + deptDetails[0][i] + "'>" + output + "</option>";
+                            }
+                            else{
+                                deptOptions += "<option value='" + deptDetails[0][i] + "' selected='selected'>" + output + "</option>";
+                            }
+                        }
+                        deptOptions += "</select>";
+                        details += deptOptions;
+                        $('#updEmployeeContents').html(details).show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error',error);
+                    }
+                });
             },
             error: function (xhr, status, error) {
                 console.log('Error',error);

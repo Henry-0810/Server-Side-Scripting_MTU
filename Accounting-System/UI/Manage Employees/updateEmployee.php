@@ -32,17 +32,18 @@ function getEmployeeInfo($employeeNo): array
 
     $employeeInfo = [];
     while($row = $result->fetch()){
+        //https://www.php.net/manual/en/functions.arrow.php arrow function learned in this link
         $employeeInfo = [
             'job' => $row['Job'],
             'age' => $row['Age'],
-            'salary' => $row['Salary']
+            'salary' => $row['Salary'],
+            'dept_ID' => $row['dept_ID']
         ];
     }
 
     $pdo = null;
     return $employeeInfo;
 }
-
 function getEmployeeName($employeeNo){
     $pdo = db_connect();
     $sql = "SELECT employee_Name FROM employee WHERE employee_NO = ?";
