@@ -28,7 +28,12 @@
     <label for="deptNo">Select department no</label>
     <select id="deptNo" name="deptNo">
         <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
-        <?php getDeptDetails();?>
+        <?php getDeptDetails(); ?>
+    </select>
+    <div id="updDeptContents" style="display: none">
+    </div>
+    <input type='button' class='deptBack' value='Back'>
+    <button type='submit' name='updDeptSubmit'>Update</button>
 </form>
 <script src="../formShow.js"></script>
 </body>

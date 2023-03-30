@@ -19,6 +19,7 @@ for (let i = 0; i < employeeBtn.length; i++) {
 
 $('document').ready(function () {
     $('#employeeNo').on('change', getSelectedValue);
+    $('#deptNo').on('change',getDeptDetails);
 });
 
 //ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
@@ -73,6 +74,35 @@ function getSelectedValue() {
         });
     } else {
         $('#updEmployeeContents').html('').hide();
+    }
+}
+
+function getDeptDetails() {
+    let deptNo = $(this).val();
+    if(deptNo !== ''){
+        $.ajax({
+            url: 'updateDepartment.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                deptNo: deptNo
+            },
+            success: function (response) {
+                console.log(response);
+                let details = "";
+                details += "<label for='updDesc'>Department description:</label>";
+                details += "<input type='text' id='updDesc' name='updDesc' value ='" + response['deptDesc'] + "' required><br>";
+                details += "<label for='updBal'>Age:</label>";
+                details += "<input type='text' id='updBal' name='updBal' value = '" + response['deptBal'] + "' required><br>";
+                $('#updDeptContents').html(details).show();
+            },
+            error: function (xhr, status, error) {
+                console.log('Error',error);
+            }
+        });
+    }
+     else {
+        $('#updDeptContents').html('').hide();
     }
 }
 
