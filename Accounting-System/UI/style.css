@@ -123,6 +123,9 @@ th {
     color: #fff;
 }
 
+table, th, tr, td:hover{
+    background-color: #555555;
+}
 a {
     color: #333;
     text-decoration: none;

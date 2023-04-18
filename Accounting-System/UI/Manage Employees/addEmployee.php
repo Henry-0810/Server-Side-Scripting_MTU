@@ -52,7 +52,7 @@ if(isset($_POST['addEmpSubmit'])) {
         $stmt->execute($values);
 
         $data = nl2br("Employee name: " . $name . "\\nJob: " . $job . "\\nAge: " . $age . "\\nSalary: " . $salary .
-            "\\nDept ID: " . $deptID . "\\nSuccessfully added to database!!!");
+            "\\nDepartment ID: " . $deptID . "\\nSuccessfully added to database!!!");
       echo $data;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     } else {

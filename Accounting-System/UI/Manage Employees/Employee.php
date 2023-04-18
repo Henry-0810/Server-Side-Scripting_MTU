@@ -51,7 +51,7 @@
     <table>
         <tr><th>Employee No</th><th>Employee Name</th><th>Job</th><th>Age</th><th>Salary</th><th>Choose</th></tr>
         <?php getAllEmployees();?>
-    </table>
+    </table><br>
     <input type='button' class='employeeBack' value='Back'>
 </form>
 <script src="../formShow.js"></script>

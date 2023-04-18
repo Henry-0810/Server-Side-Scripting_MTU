@@ -67,6 +67,7 @@ if(isset($_POST['updEmpSubmit'])) {
     $job = $_POST['updJob'];
     $age = $_POST['updAge'];
     $salary = $_POST['updSalary'];
+    $depID = $_POST['deptNo'];
 
     if ($job == '') {
         $errorMsg .= "Job is empty!";
@@ -79,16 +80,17 @@ if(isset($_POST['updEmpSubmit'])) {
     if (empty($errorMsg)) {
         $pdo = db_connect();
 
-        $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ? WHERE employee_NO = ?";
+        $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ?, dept_ID = ? WHERE employee_NO = ?";
         $stmt = $pdo->prepare($sql);
-        $values = array($job, $age, $salary, $_POST['employeeNo']);
+        $values = array($job, $age, $salary, $depID, $_POST['employeeNo']);
         $stmt->execute($values);
 
         $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
-
         $name = getEmployeeName($_POST['employeeNo']);
+
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: " .
-            $name . "\\nJob: " . $employeeInfo['job'] . "\\nAge: " . $employeeInfo['age'] . "\\nSalary: " . $employeeInfo['salary']);
+            $name . "\\nJob: " . $employeeInfo['job'] . "\\nAge: " . $employeeInfo['age'] . "\\nSalary: " . $employeeInfo['salary'] .
+            "\\nDepartment ID: " . $depID);
 
         $pdo = null;
         echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";

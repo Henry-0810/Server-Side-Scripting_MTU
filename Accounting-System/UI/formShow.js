@@ -47,7 +47,7 @@ function getSelectedValue() {
                     type: 'POST',
                     dataType: 'json',
                     success: function (deptDetails){
-                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID'>";
+                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID' name='deptNo'>";
                         //to test if the 2D php array is successfully parsed
                         for (let i = 0; i < deptDetails[0].length; i++) {
                             let output = deptDetails[0][i] + " - " + deptDetails[1][i];
