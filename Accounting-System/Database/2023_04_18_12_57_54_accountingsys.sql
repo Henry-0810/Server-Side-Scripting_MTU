@@ -26,7 +26,7 @@ CREATE TABLE `departments` (
   `dept_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
   `dept_Name` varchar(30) NOT NULL,
   `dept_Desc` varchar(80) NOT NULL,
-  `dept_Bal` decimal(8,2) NOT NULL,
+  `dept_Bal` decimal(9,2) NOT NULL,
   PRIMARY KEY (`dept_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;

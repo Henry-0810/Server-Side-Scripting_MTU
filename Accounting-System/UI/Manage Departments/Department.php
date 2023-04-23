@@ -10,6 +10,10 @@
 <button id="addDept" class="deptBtn">Add Department</button>
 <button id="updateDept" class="deptBtn">Update Department</button>
 
+<!--<table>-->
+<!--    <tr><th>Department ID</th><th>Department Name</th><th>Description</th><th>Department Balance</th></tr>-->
+<!--</table>-->
+
 <form id="addDeptForm" action="addDepartment.php" method="post" class="deptForm">
     <p>Add Department</p>
     <label for="addDeptName">Department Name:</label>
