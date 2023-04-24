@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title>Employee</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../Design/style.css">
 </head>
 <body>
+<?php include "../Design/navigationBar.php";?>
+<form id="showDeptForm" class="deptTable" style="display: block">
+    <p>Department details</p>
+    <table>
+        <tr><th>Department ID</th><th>Department Name</th><th>Description</th><th>Department Balance</th></tr>
+        <?php require_once "showAllDept.php";?>
+    </table>
+</form>
+<br>
 <button id="addDept" class="deptBtn">Add Department</button>
 <button id="updateDept" class="deptBtn">Update Department</button>
-
-<!--<table>-->
-<!--    <tr><th>Department ID</th><th>Department Name</th><th>Description</th><th>Department Balance</th></tr>-->
-<!--</table>-->
 
 <form id="addDeptForm" action="addDepartment.php" method="post" class="deptForm">
     <p>Add Department</p>
@@ -26,7 +31,7 @@
     <button type="submit" name="addDeptSubmit">Add</button>
 </form>
 
-<?php include 'updateDepartment.php';?>
+<?php require_once 'updateDepartment.php';?>
 <form id="updDeptForm" action="updateDepartment.php" method="post" class="deptForm">
     <p>Update Department details</p>
     <label for="deptNo">Select department no</label>

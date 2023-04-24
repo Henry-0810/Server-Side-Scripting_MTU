@@ -4,6 +4,8 @@ const empBackBtn = document.querySelectorAll(".employeeBack");
 const deptBtn = document.querySelectorAll(".deptBtn");
 const deptForms = document.querySelectorAll(".deptForm");
 const deptBackBtn = document.querySelectorAll(".deptBack");
+const ledgerBtn = document.querySelectorAll(".ledgerBtn");
+const ledgerForms = document.querySelectorAll(".ledgerForm");
 
 for (let i = 0; i < employeeBtn.length; i++) {
     employeeBtn[i].addEventListener('click',
@@ -143,6 +145,13 @@ for (let i = 0; i < empBackBtn.length; i++) {
         });
 }
 
+for (let i = 0; i < deptBackBtn.length; i++) {
+    deptBackBtn[i].addEventListener('click',
+        function () {
+            window.location.href = "Department.php";
+        });
+}
+
 for (let i = 0; i < deptBtn.length; i++) {
     deptBtn[i].addEventListener('click',
         function (){
@@ -152,12 +161,17 @@ for (let i = 0; i < deptBtn.length; i++) {
                 }
             }
             deptForms[i].style.display = 'block';
-        })
+        });
 }
 
-for (let i = 0; i < deptBackBtn.length; i++) {
-    deptBackBtn[i].addEventListener('click',
-        function () {
-            window.location.href = "Department.php";
+for (let i = 0; i < ledgerBtn.length; i++) {
+    ledgerBtn[i].addEventListener('click',
+        function (){
+            for (let j = 0; j < ledgerForms.length; j++) {
+                if (j !== i) {
+                    ledgerForms[j].style.display = 'none';
+                }
+            }
+            ledgerForms[i].style.display = 'block';
         });
 }

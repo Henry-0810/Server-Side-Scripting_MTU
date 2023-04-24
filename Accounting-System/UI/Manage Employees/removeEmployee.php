@@ -11,7 +11,7 @@ function getAllEmployees(): void
 
     while($row = $stmt->fetch()){
         echo '<tr><td data-id="employeeNo">'.$row['employee_NO'].'</td><td>'.$row['employee_Name'].'</td><td>'.
-            $row['Job'].'</td><td>'.$row['Age'].'</td><td>'.$row['Salary'].'</td><td>'.
+            $row['Job'].'</td><td>'.$row['Age'].'</td><td>€'.$row['Salary'].'</td><td>'.
             "<button type='button' name='rmvBtn' class='delete-btn'>Delete</button></td></tr>";
     }
 

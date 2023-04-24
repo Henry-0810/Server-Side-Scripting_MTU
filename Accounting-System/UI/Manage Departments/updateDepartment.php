@@ -1,5 +1,5 @@
 <?php
-include '../db_Connect.php';
+require_once '../db_Connect.php';
 function getDeptDetails(): void
 {
     $pdo = db_connect();

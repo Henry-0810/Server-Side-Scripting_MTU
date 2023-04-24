@@ -1,30 +1,44 @@
-h1 {
+body{
+    background-image: url("../Design/bg pic.jpg");
+}
+
+.centerText{
     text-align: center;
-    font-family: "Times New Roman", serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 48px;
-    color: #333333;
+    color: #ffffff;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-p {
+h1 {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 65px;
+}
+
+h2 {
     font-family: "Georgia", serif;
-    font-size: 20px;
-    color: #333333;
-    margin-bottom: 50px;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+p {
+    font-family: "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #efeaea;
+    margin-bottom: 30px;
 }
 
 nav {
-    background-color: #333333;
+    background-color: #b48e92;
     height: 100px;
 }
 
 nav ul {
     list-style: none;
+    float:right;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,24 +46,28 @@ nav ul {
     height: 100%;
 }
 
+.logo{
+    float:left;
+}
 nav li {
     margin: 0 20px;
 }
 
 nav li a {
+    font-size: 20px;
     display: block;
     padding: 20px;
-    color: #ffffff;
+    color: #171616;
     font-weight: bold;
     text-decoration: none;
 }
 
 nav li a:hover {
-    background-color: #555555;
+    background-color: #dcb2b2;
 }
 
 
-#addEmpForm, #updEmpForm, #rmvEmpForm, #addDeptForm, #updDeptForm {
+#addEmpForm, #updEmpForm, #rmvEmpForm, #showDeptForm, #addDeptForm, #updDeptForm, #showLedgerForm, #addLedgerForm {
     display: none;
     background-color: #333;
     color: #fff;
@@ -97,7 +115,7 @@ button {
     cursor: pointer;
 }
 
-.employeeBack, .deptBack {
+.employeeBack, .deptBack, .ledgerBack {
     background-color: #fff;
     color: #333;
     border: none;
@@ -132,8 +150,14 @@ th, td {
 }
 
 th {
+    font-family: "Times New Roman", serif;
     background-color: #333;
     color: #fff;
+    font-size: 20px;
+}
+
+td {
+    font-family: "Verdana", serif;
 }
 
 table, th, tr, td:hover{
@@ -162,4 +186,37 @@ a:hover {
 .delete-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+input[type="date"] {
+    background-color: #555;
+    color: #fff;
+    height: 27px;
+    border: none;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 10%;
+    border: 2px solid #ccc;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    outline: none;
+}
+
+input[type="radio"]:checked {
+    background-color: #797979;
+    border-color: #251919;
+}
+
+input[type="radio"]:focus {
+    box-shadow: 0 0 5px #dcb2b2;
+}
+
+.debtCredOption {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }

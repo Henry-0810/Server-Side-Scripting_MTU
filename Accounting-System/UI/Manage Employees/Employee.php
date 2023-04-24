@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Employee</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../Design/style.css">
 </head>
 <body>
+<?php include "../Design/navigationBar.php";?>
 <button id="add" class="employeeBtn">Add Employee</button>
 <button id="update" class="employeeBtn">Update Employee</button>
 <button id="remove" class="employeeBtn">Remove Employee</button>
