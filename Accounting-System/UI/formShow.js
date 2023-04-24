@@ -20,13 +20,15 @@ for (let i = 0; i < employeeBtn.length; i++) {
 }
 
 $('document').ready(function () {
-    $('#employeeNo').on('change', getSelectedValue);
     $('#deptNo').on('change',getDeptDetails);
 });
 
 //ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
-function getSelectedValue() {
-    let employeeNo = $(this).val();
+$("Button[name='updBtn']").on('click', getEmployeeDetails);
+function getEmployeeDetails() {
+    console.log("calling this function");
+    let employeeNo = $(this).data('id');
+    $('#updEmpForm').show();
     if (employeeNo !== '') {
         $.ajax({
             url: 'updateEmployee.php',
@@ -38,18 +40,22 @@ function getSelectedValue() {
             success: function (response) {
                 console.log(response);
                 let details = "";
-                details += "<label for='updJob'>Job:</label>";
-                details += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
-                details += "<label for='updAge'>Age:</label>";
-                details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
-                details += "<label for='updSalary'>Salary:</label>";
-                details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
+                details += "<table class='no-style'><tr><td><label for='employeeID'>Employee ID:</label></td>";
+                details += "<td><input type='text' id='employeeID' name='employeeID' value ='" + response['id'] + "' readonly></td></tr>";
+                details += "<tr><td><label for='employeeName'>Employee Name:</label></td>";
+                details += "<td><input type='text' id='employeeName' name='employeeName' value ='" + response['name'] + "' readonly></td></tr>";
+                details += "<tr><td><label for='updJob'>Job:</label></td>";
+                details += "<td><input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required></td></tr>";
+                details += "<tr><td><label for='updAge'>Age:</label></td>";
+                details += "<td><input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required></td></tr>";
+                details += "<tr><td><label for='updSalary'>Salary:</label></td>";
+                details += "<td><input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required></td></tr>";
                 $.ajax({
                     url: 'getDeptDetails.php',
                     type: 'POST',
                     dataType: 'json',
                     success: function (deptDetails){
-                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID' name='deptNo'>";
+                        let deptOptions = "<tr><td><label for='deptID'>Department ID: </label></td><td><select id='deptID' name='deptNo'>";
                         //to test if the 2D php array is successfully parsed
                         for (let i = 0; i < deptDetails[0].length; i++) {
                             let output = deptDetails[0][i] + " - " + deptDetails[1][i];
@@ -61,7 +67,7 @@ function getSelectedValue() {
                                 deptOptions += "<option value='" + deptDetails[0][i] + "' selected='selected'>" + output + "</option>";
                             }
                         }
-                        deptOptions += "</select>";
+                        deptOptions += "</select></td></tr></table>";
                         details += deptOptions;
                         $('#updEmployeeContents').html(details).show();
                     },
@@ -76,6 +82,35 @@ function getSelectedValue() {
         });
     } else {
         $('#updEmployeeContents').html('').hide();
+    }
+}
+
+$("Button[name='rmvBtn']").on('click', promptDialog);
+function promptDialog() {
+    console.log("calling this function");
+    let employeeData = $(this).data('id');
+    console.log(employeeData);
+    let result = confirm("Are you sure you want to remove this employee?");
+    if (result) {
+        $.ajax({
+            url: 'removeEmployee.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                employeeData: employeeData
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert("Employee removed successfully!");
+                    window.location.href = "Employee.php";
+                } else {
+                    alert("Failed to remove employee.");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log('Error', error);
+            }
+        });
     }
 }
 
@@ -107,36 +142,6 @@ function getDeptDetails() {
         $('#updDeptContents').html('').hide();
     }
 }
-
-$("Button[name='rmvBtn']").on('click', promptDialog);
-function promptDialog() {
-    console.log("calling this function");
-    let employeeData = $('td[data-id="employeeNo"]').text();
-    console.log(employeeData);
-    let result = confirm("Are you sure you want to remove this employee?");
-    if (result) {
-        $.ajax({
-            url: 'removeEmployee.php',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                employeeData: employeeData
-            },
-            success: function(response) {
-                if (response.success) {
-                    alert("Employee removed successfully!");
-                    window.location.href = "Employee.php";
-                } else {
-                    alert("Failed to remove employee.");
-                }
-            },
-            error: function (xhr, status, error) {
-                console.log('Error', error);
-            }
-        });
-    }
-}
-
 
 for (let i = 0; i < empBackBtn.length; i++) {
     empBackBtn[i].addEventListener('click',

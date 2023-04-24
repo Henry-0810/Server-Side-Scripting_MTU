@@ -67,7 +67,7 @@ nav li a:hover {
 }
 
 
-#addEmpForm, #updEmpForm, #rmvEmpForm, #showDeptForm, #addDeptForm, #updDeptForm, #showLedgerForm, #addLedgerForm {
+#showEmpForm, #addEmpForm, #updEmpForm, #showDeptForm, #addDeptForm, #updDeptForm, #showLedgerForm, #addLedgerForm {
     display: none;
     background-color: #333;
     color: #fff;
@@ -86,7 +86,7 @@ input[type="text"] {
     border: none;
     background-color: #555;
     color: #fff;
-    width: 100%;
+    width: 300px;
     box-sizing: border-box;
 }
 
@@ -97,7 +97,7 @@ select {
     border: none;
     background-color: #555;
     color: #fff;
-    width: 60%;
+    width: 150px;
     box-sizing: border-box;
 }
 
@@ -143,6 +143,11 @@ table {
     width: 100%;
 }
 
+table.no-style {
+    border: none;
+    width: 150px;
+}
+
 th, td {
     border: 1px solid #fff;
     padding: 8px;
@@ -172,7 +177,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.delete-btn {
+.table-btn {
     background-color: #e74c3c;
     color: #fff;
     border: none;
@@ -183,7 +188,7 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-.delete-btn:hover {
+.table-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }

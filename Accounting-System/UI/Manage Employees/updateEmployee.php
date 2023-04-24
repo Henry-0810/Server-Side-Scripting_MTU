@@ -34,6 +34,8 @@ function getEmployeeInfo($employeeNo): array
     while($row = $result->fetch()){
         //https://www.php.net/manual/en/functions.arrow.php arrow function learned in this link
         $employeeInfo = [
+            'id' => $row['employee_NO'],
+            'name' => $row['employee_Name'],
             'job' => $row['Job'],
             'age' => $row['Age'],
             'salary' => $row['Salary'],
@@ -57,13 +59,13 @@ function getEmployeeName($employeeNo){
     return $name;
 }
 
-if(isset($_POST['employeeNo'])){
+if(isset($_POST['employeeNo'])) {
     $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
     echo json_encode($employeeInfo);
 }
 
 $errorMsg = "";
-if(isset($_POST['updEmpSubmit'])) {
+if (isset($_POST['updEmpSubmit'])) {
     $job = $_POST['updJob'];
     $age = $_POST['updAge'];
     $salary = $_POST['updSalary'];
@@ -85,7 +87,6 @@ if(isset($_POST['updEmpSubmit'])) {
         $values = array($job, $age, $salary, $depID, $_POST['employeeNo']);
         $stmt->execute($values);
 
-        $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
         $name = getEmployeeName($_POST['employeeNo']);
 
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: " .
@@ -93,11 +94,12 @@ if(isset($_POST['updEmpSubmit'])) {
             "\\nDepartment ID: " . $depID);
 
         $pdo = null;
-        echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
+        echo "<script>alert('Successfully Updated to database!');  </script>";
     } else {
         echo "<script>alert('$errorMsg'); window.history.back(); </script>";
     }
 }
+
 
 
 
