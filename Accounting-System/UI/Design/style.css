@@ -66,12 +66,46 @@ nav li a:hover {
     background-color: #dcb2b2;
 }
 
-
 #showEmpForm, #addEmpForm, #updEmpForm, #showDeptForm, #addDeptForm, #updDeptForm, #showLedgerForm, #addLedgerForm {
     display: none;
     background-color: #333;
     color: #fff;
     padding: 20px;
+}
+
+.emp-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+
+#updEmpForm button[type="submit"], #addEmpForm button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#updEmpForm button[type="submit"]:hover, #addEmpForm button[type="submit"]:hover {
+    background-color: #0062cc;
 }
 
 label {
@@ -116,11 +150,11 @@ button {
 }
 
 .employeeBack, .deptBack, .ledgerBack {
+    padding: 10px 20px;
     background-color: #fff;
     color: #333;
     border: none;
-    padding: 5px 10px;
-    margin-right: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -138,14 +172,14 @@ p.select-employee {
     margin-bottom: 10px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
 table.no-style {
     border: none;
     width: 150px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
 th, td {

@@ -7,17 +7,21 @@ const deptBackBtn = document.querySelectorAll(".deptBack");
 const ledgerBtn = document.querySelectorAll(".ledgerBtn");
 const ledgerForms = document.querySelectorAll(".ledgerForm");
 
-for (let i = 0; i < employeeBtn.length; i++) {
-    employeeBtn[i].addEventListener('click',
-        function (){
-            for (let j = 0; j < employeeForms.length; j++) {
-                if (j !== i) {
-                    employeeForms[j].style.display = 'none';
-                }
-            }
-        employeeForms[i].style.display = 'block';
-    })
-}
+// for (let i = 0; i < employeeBtn.length; i++) {
+//     employeeBtn[i].addEventListener('click',
+//         function (){
+//             for (let j = 0; j < employeeForms.length; j++) {
+//                 if (j !== i) {
+//                     employeeForms[j].style.display = 'none';
+//                 }
+//             }
+//         employeeForms[i].style.display = 'block';
+//     })
+// }
+$('#addEmployee').on('click',function(){
+    $('#addEmpForm').show();
+    $('#overlay').addClass('overlay');
+});
 
 $('document').ready(function () {
     $('#deptNo').on('change',getDeptDetails);
@@ -27,36 +31,38 @@ $('document').ready(function () {
 $("Button[name='updBtn']").on('click', getEmployeeDetails);
 function getEmployeeDetails() {
     console.log("calling this function");
-    let employeeNo = $(this).data('id');
+    let employeeID = $(this).data('id');
+    console.log(employeeID);
     $('#updEmpForm').show();
-    if (employeeNo !== '') {
+    $('#overlay').addClass('overlay');
+    if (employeeID !== '') {
         $.ajax({
             url: 'updateEmployee.php',
             type: 'POST',
             dataType: 'json',
             data: {
-                employeeNo: employeeNo
+                employeeID: employeeID
             },
             success: function (response) {
                 console.log(response);
                 let details = "";
-                details += "<table class='no-style'><tr><td><label for='employeeID'>Employee ID:</label></td>";
-                details += "<td><input type='text' id='employeeID' name='employeeID' value ='" + response['id'] + "' readonly></td></tr>";
-                details += "<tr><td><label for='employeeName'>Employee Name:</label></td>";
-                details += "<td><input type='text' id='employeeName' name='employeeName' value ='" + response['name'] + "' readonly></td></tr>";
-                details += "<tr><td><label for='updJob'>Job:</label></td>";
-                details += "<td><input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required></td></tr>";
-                details += "<tr><td><label for='updAge'>Age:</label></td>";
-                details += "<td><input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required></td></tr>";
-                details += "<tr><td><label for='updSalary'>Salary:</label></td>";
-                details += "<td><input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required></td></tr>";
+                details += "<label for='employeeID'>Employee ID:</label>";
+                details += "<input type='text' id='employeeID' name='employeeID' value ='" + response['id'] + "' readonly><br>";
+                details += "<label for='employeeName'>Employee Name:</label>";
+                details += "<input type='text' id='employeeName' name='employeeName' value ='" + response['name'] + "' readonly><br>";
+                details += "<label for='updJob'>Job:</label>";
+                details += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
+                details += "<label for='updAge'>Age:</label>";
+                details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
+                details += "<label for='updSalary'>Salary:</label>";
+                details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
                 $.ajax({
                     url: 'getDeptDetails.php',
                     type: 'POST',
                     dataType: 'json',
                     success: function (deptDetails){
-                        let deptOptions = "<tr><td><label for='deptID'>Department ID: </label></td><td><select id='deptID' name='deptNo'>";
-                        //to test if the 2D php array is successfully parsed
+                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID' name='deptNo' style='width: 300px;'>";
+                        //to test if the 2D array is successfully parsed
                         for (let i = 0; i < deptDetails[0].length; i++) {
                             let output = deptDetails[0][i] + " - " + deptDetails[1][i];
                             console.log(output);
@@ -67,7 +73,7 @@ function getEmployeeDetails() {
                                 deptOptions += "<option value='" + deptDetails[0][i] + "' selected='selected'>" + output + "</option>";
                             }
                         }
-                        deptOptions += "</select></td></tr></table>";
+                        deptOptions += "</select>";
                         details += deptOptions;
                         $('#updEmployeeContents').html(details).show();
                     },

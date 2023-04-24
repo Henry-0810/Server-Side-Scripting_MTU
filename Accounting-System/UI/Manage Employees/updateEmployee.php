@@ -59,8 +59,8 @@ function getEmployeeName($employeeNo){
     return $name;
 }
 
-if(isset($_POST['employeeNo'])) {
-    $employeeInfo = getEmployeeInfo($_POST['employeeNo']);
+if(isset($_POST['employeeID'])) {
+    $employeeInfo = getEmployeeInfo($_POST['employeeID']);
     echo json_encode($employeeInfo);
 }
 
@@ -84,17 +84,18 @@ if (isset($_POST['updEmpSubmit'])) {
 
         $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ?, dept_ID = ? WHERE employee_NO = ?";
         $stmt = $pdo->prepare($sql);
-        $values = array($job, $age, $salary, $depID, $_POST['employeeNo']);
+        $values = array($job, $age, $salary, $depID, $_POST['employeeID']);
         $stmt->execute($values);
 
-        $name = getEmployeeName($_POST['employeeNo']);
+        $name = getEmployeeName($_POST['employeeID']);
+        $employeeInfo = getEmployeeInfo($_POST['employeeID']);
 
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nEmployee Name: " .
             $name . "\\nJob: " . $employeeInfo['job'] . "\\nAge: " . $employeeInfo['age'] . "\\nSalary: " . $employeeInfo['salary'] .
             "\\nDepartment ID: " . $depID);
 
         $pdo = null;
-        echo "<script>alert('Successfully Updated to database!');  </script>";
+        echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
     } else {
         echo "<script>alert('$errorMsg'); window.history.back(); </script>";
     }
