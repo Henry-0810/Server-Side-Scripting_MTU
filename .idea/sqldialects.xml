@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Accounting-System/Database/2023_04_18_12_57_54_accountingsys.sql" dialect="MariaDB" />
+  </component>
+</project>

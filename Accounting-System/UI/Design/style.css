@@ -108,50 +108,62 @@ nav li a:hover {
     z-index: 9998;
 }
 
-#updEmpForm button[type="submit"], #addEmpForm button[type="submit"] {
+#updEmpForm button[type="submit"], #addEmpForm button[type="submit"], #updDeptForm button[type="submit"],
+#addDeptForm button[type="submit"], #addLedgerForm button[type="submit"] {
     padding: 10px 20px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
+    font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
+    width: 100%;
+    max-width: 200px;
 }
 
-#updEmpForm button[type="submit"]:hover, #addEmpForm button[type="submit"]:hover {
+#updEmpForm button[type="submit"]:hover, #addEmpForm button[type="submit"]:hover,
+#updDeptForm button[type="submit"]:hover, #addDeptForm button[type="submit"]:hover, #addLedgerForm button[type="submit"]:hover {
     background-color: #0062cc;
 }
 
+.formContents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 label {
-    display: block;
     margin-bottom: 5px;
     color: #15416e;
 }
 
 input[type="text"] {
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-right: 5px;
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
     border: none;
-    background-color: #555;
-    color: #fff;
-    width: 300px;
-    box-sizing: border-box;
+    border-radius: 4px;
+    color: #000000;
+    background-color: #f0f0f0;
 }
 
 select {
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-right: 5px;
+    padding: 8px;
+    margin: 5px 0;
     border: none;
-    background-color: #555;
-    color: #fff;
-    width: 150px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #000000;
+    width: 100%;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
 option {
-    background-color: #555;
-    color: #fff;
+    background-color: #f0f0f0;
+    color: #000000;
+    font-size: 14px;
 }
 
 button {
@@ -163,7 +175,7 @@ button {
     cursor: pointer;
 }
 
-.employeeBtn, .deptBtn {
+.employeeBtn, .deptBtn, .ledgerBtn {
     padding: 10px 20px;
     margin-bottom: 5px;
     background-color: #15416e;
@@ -172,37 +184,50 @@ button {
 }
 
 .employeeBack, .deptBack, .ledgerBack {
-    padding: 9px 19px;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid black;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
+    width: 100%;
+    max-width: 200px;
 }
 
 .employeeBack:hover, .deptBack:hover, .ledgerBack:hover {
     background-color: #c7c3c3;
 }
 
-button[type="submit"] {
-    background-color: #fff;
-    color: #333;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+.formContents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-p.select-employee {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
+.formContents label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.formContents input[type="text"] {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.formContents button[type="submit"] {
+    margin-top: 5px;
 }
 
 table {
     border-collapse: collapse;
-    border: 1px solid #dee2e6;
+    border-spacing: 0;
     width: 100%;
     color: #212529;
+    border: 1px solid #a6a3a3;
 }
 
 th {
@@ -212,11 +237,12 @@ th {
     background-color: #dde8f5;
     color: #15416e;
     font-size: 20px;
-    border: 1px solid #a6a3a3;
     border-radius: 3px;
 }
 
-tr{
+table tr{
+    border-top: 1px solid #a6a3a3;
+    border-bottom: 1px solid #a6a3a3;
     padding: 8px;
     text-align: left;
 }
@@ -227,7 +253,6 @@ td {
     text-align: left;
     background-color: #ffffff;
     color: black;
-    border: 1px solid #a6a3a3;
 }
 
 a {

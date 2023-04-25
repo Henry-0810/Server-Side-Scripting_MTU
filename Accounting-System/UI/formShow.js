@@ -19,10 +19,6 @@ const ledgerForms = document.querySelectorAll(".ledgerForm");
 //     })
 // }
 
-$('document').ready(function () {
-    $('#deptNo').on('change',getDeptDetails);
-});
-
 $('#addEmployee').on('click',function(){
     $('#addEmpForm').show();
     $('#overlay').addClass('overlay');
@@ -67,7 +63,7 @@ function getEmployeeDetails() {
                     type: 'POST',
                     dataType: 'json',
                     success: function (deptDetails){
-                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID' name='deptNo' style='width: 300px;'>";
+                        let deptOptions = "<label for='deptID'>Department ID: </label><select id='deptID' name='deptNo'>";
                         //to test if the 2D array is successfully parsed
                         for (let i = 0; i < deptDetails[0].length; i++) {
                             let output = deptDetails[0][i] + " - " + deptDetails[1][i];
@@ -126,10 +122,13 @@ function promptDialog() {
     }
 }
 
-$("Button[name='updDeptBtn']").on('click', getEmployeeDetails);
+$("Button[name='updDeptBtn']").on('click', getDeptDetails);
 
 function getDeptDetails() {
-    let deptNo = $(this).val();
+    console.log("calling this function");
+    let deptNo = $(this).data('id');
+    $('#updDeptForm').show();
+    $('#overlay').addClass('overlay');
     if(deptNo !== ''){
         $.ajax({
             url: 'updateDepartment.php',
@@ -141,6 +140,10 @@ function getDeptDetails() {
             success: function (response) {
                 console.log(response);
                 let details = "";
+                details += "<label for='deptID'>Department ID:</label>";
+                details += "<input type='text' id='deptID' name='deptID' value ='" + response['deptID'] + "' readonly><br>";
+                details += "<label for='deptName'>Age:</label>";
+                details += "<input type='text' id='deptName' name='deptName' value = '" + response['deptName'] + "' readonly><br>";
                 details += "<label for='updDesc'>Department description:</label>";
                 details += "<input type='text' id='updDesc' name='updDesc' value ='" + response['deptDesc'] + "' required><br>";
                 details += "<label for='updBal'>Age:</label>";

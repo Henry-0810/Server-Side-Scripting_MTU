@@ -21,31 +21,27 @@
 
 <div class="emp-container">
     <form id="addDeptForm" action="addDepartment.php" method="post" class="deptForm">
-        <p>Add Department</p>
-        <label for="addDeptName">Department Name:</label>
-        <input type="text" id="addDeptName" name="addDeptName" required>
-        <label for="addDeptDesc">Description:</label>
-        <input type="text" id="addDeptDesc" name="addDeptDesc" required>
-        <label for="addDeptBal">Department Balance:</label>
-        <input type="text" id="addDeptBal" name="addDeptBal" value="0.00"><br>
-        <input type='button' class='deptBack' value='Back'>
-        <button type="submit" name="addDeptSubmit">Add</button>
+        <div class="formContents">
+            <p>Add Department</p>
+            <label>Department Name: <input type="text" id="addDeptName" name="addDeptName" required></label>
+            <label>Description: <input type="text" id="addDeptDesc" name="addDeptDesc" required></label>
+            <label>Department Balance: <input type="text" id="addDeptBal" name="addDeptBal" value="0.00"><br></label>
+            <input type='button' class='deptBack' value='Back'>
+            <button type="submit" name="addDeptSubmit">Add</button>
+        </div>
     </form>
 </div>
 
 <?php require_once 'updateDepartment.php';?>
 <div class="emp-container">
     <form id="updDeptForm" action="updateDepartment.php" method="post" class="deptForm">
-        <p>Update Department details</p>
-        <label for="deptNo">Select department no</label>
-        <select id="deptNo" name="deptNo">
-            <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
-            <?php getDeptDetails(); ?>
-        </select>
-        <div id="updDeptContents" style="display: none">
+        <div class="formContents">
+            <p>Selected Department details</p>
+            <div id="updDeptContents" style="display: none">
+            </div>
+            <input type='button' class='deptBack' value='Back'>
+            <button type='submit' name='updDeptSubmit'>Update</button>
         </div>
-        <input type='button' class='deptBack' value='Back'>
-        <button type='submit' name='updDeptSubmit'>Update</button>
     </form>
 </div>
 <script src="../formShow.js"></script>

@@ -33,6 +33,8 @@ function getDeptInfo($deptID): array
     $deptInfo = [];
     while($row = $result->fetch()){
         $deptInfo = [
+            'deptID' => $row['dept_ID'],
+            'deptName' => $row['dept_Name'],
             'deptDesc' => $row['dept_Desc'],
             'deptBal' => $row['dept_Bal']
         ];
@@ -82,11 +84,12 @@ if(isset($_POST['updDeptSubmit'])){
         $values = array($description,$balance,$_POST['deptNo']);
         $stmt->execute($values);
 
-        $departmentInfo = getDeptInfo($_POST['deptNo']);
         $name = getDeptName($_POST['deptNo']);
+        $departmentInfo = getDeptInfo($_POST['deptNo']);
 
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nDepartment Name: " .
             $name . "\\nDescription: " . $departmentInfo['deptDesc'] . "\\nBalance: " . $departmentInfo['deptBal']);
+
         $pdo = null;
         echo "<script>alert('$data'); window.location.href = 'Department.php'; </script>";
     }
