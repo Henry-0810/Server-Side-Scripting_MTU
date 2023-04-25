@@ -14,7 +14,7 @@ try {
 
     $result->execute();
 
-    echo "You just deleted customer no: " . $_POST['id'] ." \n click<a href='deleteform.html'> here</a> to go back ";
+    echo "You just deleted customer no: " . $_POST['id'] . " \n click<a href='deleteform.html'> here</a> to go back ";
 
 }
 

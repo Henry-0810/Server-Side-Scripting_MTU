@@ -1,24 +1,5 @@
 <?php
 require_once '../db_Connect.php';
-
-function getEmployeeDetails(): void
-{
-    $pdo = db_Connect();
-    $sql = "SELECT employee_NO, employee_Name FROM employee";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach ($result as $row) {
-        echo "<option value='" . $row["employee_NO"] . "'>" . $row["employee_NO"] . " - " .
-            $row["employee_Name"] . "</option>";
-    }
-
-    $pdo = null;
-}
-
 function getEmployeeInfo($employeeNo): array
 {
     $pdo = db_connect();

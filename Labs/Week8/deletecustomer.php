@@ -8,7 +8,7 @@ $result->bindValue(':cid', $_POST['id']);
 $result->execute();
      
 
-echo "You just deleted customer no: " . $_POST['id'] ." \n click<a href='view all update delete.php'> here</a> to go back ";
+echo "You just deleted customer no: " . $_POST['id'] . " \n click<a href='view all update delete.php'> here</a> to go back ";
                                                                         
 } 
 catch (PDOException $e) { 

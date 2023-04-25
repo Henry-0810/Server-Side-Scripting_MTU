@@ -14,7 +14,7 @@ $result->execute();
 $count = $result->rowCount();
 if ($count > 0)
 {
-echo "You just updated customer no: " . $_POST['ud_id'] ."  click<a href='selectupdate.php'> here</a> to go back ";
+echo "You just updated customer no: " . $_POST['ud_id'] . "  click<a href='selectupdate.php'> here</a> to go back ";
 }
 else
 {

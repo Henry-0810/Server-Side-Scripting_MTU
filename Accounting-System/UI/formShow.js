@@ -18,17 +18,23 @@ const ledgerForms = document.querySelectorAll(".ledgerForm");
 //         employeeForms[i].style.display = 'block';
 //     })
 // }
-$('#addEmployee').on('click',function(){
-    $('#addEmpForm').show();
-    $('#overlay').addClass('overlay');
-});
 
 $('document').ready(function () {
     $('#deptNo').on('change',getDeptDetails);
 });
 
+$('#addEmployee').on('click',function(){
+    $('#addEmpForm').show();
+    $('#overlay').addClass('overlay');
+});
+
+$('#addDept').on('click',function(){
+    $('#addDeptForm').show();
+    $('#overlay').addClass('overlay');
+});
+
 //ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
-$("Button[name='updBtn']").on('click', getEmployeeDetails);
+$("Button[name='updEmpBtn']").on('click', getEmployeeDetails);
 function getEmployeeDetails() {
     console.log("calling this function");
     let employeeID = $(this).data('id');
@@ -91,7 +97,7 @@ function getEmployeeDetails() {
     }
 }
 
-$("Button[name='rmvBtn']").on('click', promptDialog);
+$("Button[name='rmvEmpBtn']").on('click', promptDialog);
 function promptDialog() {
     console.log("calling this function");
     let employeeData = $(this).data('id');
@@ -119,6 +125,8 @@ function promptDialog() {
         });
     }
 }
+
+$("Button[name='updDeptBtn']").on('click', getEmployeeDetails);
 
 function getDeptDetails() {
     let deptNo = $(this).val();

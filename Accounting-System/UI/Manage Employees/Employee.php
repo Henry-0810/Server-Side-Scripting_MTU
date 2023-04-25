@@ -9,10 +9,9 @@
 <body>
 <div id="overlay"></div>
 <?php include "../Design/navigationBar.php";?>
-<button id="addEmployee" class="employeeBtn">Add Employee</button>
-
-<form id="showEmpForm" class="employeeForm" style="display: block">
+<form id="showEmpForm" class="employeeForm">
     <p>Employee details</p>
+    <button type="button" id="addEmployee" class="employeeBtn">Add Employee</button>
     <table>
         <tr><th>Employee No</th><th>Employee Name</th><th>Job</th><th>Age</th><th>Salary</th><th>Department</th><th>Choose</th></tr>
         <?php include_once 'showAllEmp.php'; ?>

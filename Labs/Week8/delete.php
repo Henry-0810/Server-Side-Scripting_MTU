@@ -20,7 +20,7 @@ if($result->fetchColumn() > 0)
 while ($row = $result->fetch()) { 
       
       echo $row['name'] . ' ' . $row['address'] . ' Are you sure you want to delete ??' . '<form action="deletecustomer.php" method="post">
-            <input type="hidden" name="id" value="'.$row['custid'].'"> 
+            <input type="hidden" name="id" value="' .$row['custid'].'"> 
             <input type="submit" value="yes delete" name="delete">
         </form>';
         
