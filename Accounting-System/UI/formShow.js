@@ -1,3 +1,11 @@
+$('document').ready(function(){
+    let currDate = new Date().toJSON().slice(0,10);
+    let currTime = new Date().toJSON().slice(11,19);
+
+    console.log(currDate + " " + currTime);
+    $('ledgerDate').val(new Date());
+});
+
 $('#addEmployee').on('click',function(){
     $('#addEmpForm').show();
     $('#overlay').addClass('overlay');

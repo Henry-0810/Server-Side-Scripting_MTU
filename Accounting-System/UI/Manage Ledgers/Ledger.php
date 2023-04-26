@@ -35,7 +35,7 @@
             <label for="amount">Amount:</label>
             <input type="text" id="amount" name="amount" value="0.00">
             <label class="transactionTypeLabel">Transaction Type:</label>
-            <div style="display: flex;">
+            <div style="display: -webkit-box; align-self: flex-start">
                 <label for="debit" class="debtCredOption">Debit</label>
                 <input type="radio" id="debit" name="debtCredOption" value="D">
                 <label for="credit" class="debtCredOption">Credit</label>
