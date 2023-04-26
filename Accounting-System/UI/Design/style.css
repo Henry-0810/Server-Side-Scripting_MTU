@@ -76,7 +76,7 @@ nav li a:hover {
     width: 80%;
 }
 
-#addEmpForm, #updEmpForm, #addDeptForm, #updDeptForm, #addLedgerForm {
+#addEmpForm, #updEmpForm, #addDeptForm, #updDeptForm, #addLedgerForm, #updLedgerForm {
     display: none;
     background-color: #ffffff;
     color: #fff;
@@ -109,7 +109,7 @@ nav li a:hover {
 }
 
 #updEmpForm button[type="submit"], #addEmpForm button[type="submit"], #updDeptForm button[type="submit"],
-#addDeptForm button[type="submit"], #addLedgerForm button[type="submit"] {
+#addDeptForm button[type="submit"], #addLedgerForm button[type="submit"], #updLedgerForm button[type="submit"] {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -123,7 +123,8 @@ nav li a:hover {
 }
 
 #updEmpForm button[type="submit"]:hover, #addEmpForm button[type="submit"]:hover,
-#updDeptForm button[type="submit"]:hover, #addDeptForm button[type="submit"]:hover, #addLedgerForm button[type="submit"]:hover {
+#updDeptForm button[type="submit"]:hover, #addDeptForm button[type="submit"]:hover,
+#addLedgerForm button[type="submit"]:hover, #updLedgerForm button[type="submit"]:hover {
     background-color: #0062cc;
 }
 

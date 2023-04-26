@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="../Design/style.css">
 </head>
 <body>
+<div id="overlay"></div>
 <?php include '../Design/navigationBar.php'; ?>
-<br>
 <form id="showLedgerForm" class="ledgerTable" style="display: block">
     <p>Ledger details</p>
     <button type="button" class="ledgerBtn" id="addLedger">Add Ledger</button>
     <input class="searchBar" type="text" id="userInput" placeholder="Search for desired keyword...">
     <table>
-        <tr><th>Ledger ID</th><th>Name</th><th>Created On</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th></tr>
+        <tr><th>Ledger ID</th><th>Name</th><th>Created On</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
         <?php include_once 'showLedgerDetails.php';?>
     </table>
 </form>
@@ -43,6 +43,18 @@
             </div>
             <input type='button' class='ledgerBack' value='Back'>
             <button type="submit" name="addLedgerSubmit">Add</button>
+        </div>
+    </form>
+</div>
+
+<div class="emp-container">
+    <form id="updLedgerForm" action="updateLedger.php" method="post" class="ledgerForm">
+        <div class="formContents">
+            <p>Selected Ledger details</p>
+            <div id="updLedgerContents" style="display: none">
+            </div>
+            <input type='button' class='ledgerBack' value='Back'>
+            <button type='submit' name='updLedgerSubmit'>Update</button>
         </div>
     </form>
 </div>

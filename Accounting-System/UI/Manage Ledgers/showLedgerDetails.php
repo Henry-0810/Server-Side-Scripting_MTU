@@ -12,7 +12,8 @@ $stmt->execute();
 while($row = $stmt->fetch()){
     $deptID = $row['dept_ID'];
     echo '<tr><td>'.$row['ledger_ID'].'</td><td>'.$row['ledger_Name'].'</td><td>'.$row['created_On'].'</td><td>'.
-        getDeptName($deptID).'</td><td>'.$row['amount'].'</td><td>'.$row['transaction_type'].'</td></tr>';
+        getDeptName($deptID).'</td><td>'.$row['amount'].'</td><td>'.$row['transaction_type'].'</td>'.
+        '<td><button type="button" name="updLedgerBtn" class="table-btn" data-id='.$row['leger_ID'].'>Update</button></td></tr>';
 }
 
 $pdo = null;

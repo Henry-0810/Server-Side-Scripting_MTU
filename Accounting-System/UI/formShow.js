@@ -1,24 +1,3 @@
-const employeeBtn = document.querySelectorAll(".employeeBtn");
-const employeeForms = document.querySelectorAll(".employeeForm");
-const empBackBtn = document.querySelectorAll(".employeeBack");
-const deptBtn = document.querySelectorAll(".deptBtn");
-const deptForms = document.querySelectorAll(".deptForm");
-const deptBackBtn = document.querySelectorAll(".deptBack");
-const ledgerBtn = document.querySelectorAll(".ledgerBtn");
-const ledgerForms = document.querySelectorAll(".ledgerForm");
-
-// for (let i = 0; i < employeeBtn.length; i++) {
-//     employeeBtn[i].addEventListener('click',
-//         function (){
-//             for (let j = 0; j < employeeForms.length; j++) {
-//                 if (j !== i) {
-//                     employeeForms[j].style.display = 'none';
-//                 }
-//             }
-//         employeeForms[i].style.display = 'block';
-//     })
-// }
-
 $('#addEmployee').on('click',function(){
     $('#addEmpForm').show();
     $('#overlay').addClass('overlay');
@@ -27,6 +6,23 @@ $('#addEmployee').on('click',function(){
 $('#addDept').on('click',function(){
     $('#addDeptForm').show();
     $('#overlay').addClass('overlay');
+});
+
+$('#addLedger').on('click',function(){
+    $('#addLedgerForm').show();
+    $('#overlay').addClass('overlay');
+});
+
+$('.deptBack').on('click', function () {
+    window.location.href = "Department.php";
+});
+
+$('.employeeBack').on('click', function () {
+    window.location.href = "Employee.php";
+});
+
+$('.ledgerBack').on('click', function () {
+    window.location.href = "Ledger.php";
 });
 
 //ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
@@ -160,40 +156,3 @@ function getDeptDetails() {
     }
 }
 
-for (let i = 0; i < empBackBtn.length; i++) {
-    empBackBtn[i].addEventListener('click',
-        function () {
-            window.location.href = "Employee.php";
-        });
-}
-
-for (let i = 0; i < deptBackBtn.length; i++) {
-    deptBackBtn[i].addEventListener('click',
-        function () {
-            window.location.href = "Department.php";
-        });
-}
-
-for (let i = 0; i < deptBtn.length; i++) {
-    deptBtn[i].addEventListener('click',
-        function (){
-            for (let j = 0; j < deptForms.length; j++) {
-                if (j !== i) {
-                    deptForms[j].style.display = 'none';
-                }
-            }
-            deptForms[i].style.display = 'block';
-        });
-}
-
-for (let i = 0; i < ledgerBtn.length; i++) {
-    ledgerBtn[i].addEventListener('click',
-        function (){
-            for (let j = 0; j < ledgerForms.length; j++) {
-                if (j !== i) {
-                    ledgerForms[j].style.display = 'none';
-                }
-            }
-            ledgerForms[i].style.display = 'block';
-        });
-}
