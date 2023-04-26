@@ -127,37 +127,16 @@ nav li a:hover {
     background-color: #0062cc;
 }
 
-.formContents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-    margin-bottom: 5px;
-    color: #15416e;
-}
-
-input[type="text"] {
-    width: 90%;
-    padding: 8px;
-    margin: 5px 0;
-    border: none;
-    border-radius: 4px;
-    color: #000000;
-    background-color: #f0f0f0;
-}
-
 select {
     padding: 8px;
     margin: 5px 0;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #f0f0f0;
     color: #000000;
     width: 100%;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 option {
@@ -198,28 +177,6 @@ button {
 
 .employeeBack:hover, .deptBack:hover, .ledgerBack:hover {
     background-color: #c7c3c3;
-}
-
-.formContents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.formContents label {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-}
-
-.formContents input[type="text"] {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-}
-
-.formContents button[type="submit"] {
-    margin-top: 5px;
 }
 
 table {
@@ -280,26 +237,63 @@ a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-input[type="date"] {
-    background-color: #555;
-    color: #fff;
-    height: 27px;
+label {
+    color: #15416e;
+}
+
+input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    margin: 5px 0;
     border: none;
+    border-radius: 4px;
+    color: #000000;
+    background-color: #f0f0f0;
+    align-items: center;
+}
+
+.formContents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContents label {
+    display: flex;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.formContents input[type="text"] {
+    display: flex;
+    font-size: 14px;
+}
+
+.formContents button[type="submit"] {
+    margin-top: 5px;
+}
+
+input[type="date"] {
+    background-color: #f0f0f0;
+    color: #000000;
+    height: 30px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    align-self: flex-start;
 }
 
 input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;
-    border-radius: 10%;
+    border-radius: 15px;
     border: 2px solid #ccc;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
     outline: none;
+
 }
 
 input[type="radio"]:checked {
-    background-color: #797979;
+    background-color: #f0f0f0;
     border-color: #251919;
 }
 
@@ -307,8 +301,31 @@ input[type="radio"]:focus {
     box-shadow: 0 0 5px #dcb2b2;
 }
 
-.debtCredOption {
-    display: flex;
-    align-items: center;
+.transactionTypeLabel{
     margin-bottom: 10px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.radio-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.radio-row label {
+    font-size: 16px;
+}
+
+#debit {
+    margin-right: 5px;
+    padding: 12px 12px;
+    order: 1;
+}
+
+#credit {
+    padding: 12px 12px;
+    order: 2;
 }

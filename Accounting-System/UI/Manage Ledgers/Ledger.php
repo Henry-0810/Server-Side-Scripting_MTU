@@ -8,10 +8,10 @@
 </head>
 <body>
 <?php include '../Design/navigationBar.php'; ?>
-
 <br>
 <form id="showLedgerForm" class="ledgerTable" style="display: block">
     <p>Ledger details</p>
+    <button type="button" class="ledgerBtn" id="addLedger">Add Ledger</button>
     <input class="searchBar" type="text" id="userInput" placeholder="Search for desired keyword...">
     <table>
         <tr><th>Ledger ID</th><th>Name</th><th>Created On</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th></tr>
@@ -19,31 +19,37 @@
     </table>
 </form>
 
-<button id="addLedger" class="ledgerBtn">Add Ledger</button>
-
-<form id="addLedgerForm" action="addLedger.php" method="post" class="ledgerForm">
-    <p>Add Ledger</p>
-    <label for="addLedgerName">Department Name:</label>
-    <input type="text" id="addLedgerName" name="addLedgerName" required>
-    <label for="ledgerDate">Created On:</label>
-    <input type="date" id="ledgerDate" name="createdOn" required><br><br>
-    <label for="deptNo">Select department id:</label>
-    <select id="deptNo" name="deptNo" style="width: 300px;">
-        <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
-        <?php include_once '../Manage Departments/updateDepartment.php'; getDeptDetails();?>
-    </select><br>
-    <label for="amount">Amount:</label>
-    <input type="text" id="amount" name="amount" value="0.00">
-    <label>Transaction Type:</label>
-    <div style="display:inline-flex">
-        <label class="debtCredOption"><input type="radio" id="debit" name="debtCredOption" value="D">Debit</label>
-        <label class="debtCredOption"><input type="radio" id="credit" name="debtCredOption" value="C">Credit</label>
-    </div>
-    <br>
-    <input type='button' class='ledgerBack' value='Back'>
-    <button type="submit" name="addLedgerSubmit">Add</button>
-</form>
-
+<div class="emp-container">
+    <form id="addLedgerForm" action="addLedger.php" method="post" class="ledgerForm">
+        <div class="formContents">
+            <p>Add Ledger</p>
+            <label for="addLedgerName">Department Name:</label>
+            <input type="text" id="addLedgerName" name="addLedgerName" required>
+            <label for="ledgerDate">Created On:</label>
+            <input type="date" id="ledgerDate" name="createdOn" required><br>
+            <label for="deptNo">Select department id:</label>
+            <select id="deptNo" name="deptNo" style="width: 300px;">
+                <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
+                <?php include_once '../Manage Departments/updateDepartment.php'; getDeptDetails();?>
+            </select>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount" value="0.00">
+            <label class="transactionTypeLabel">Transaction Type:</label>
+            <div class="radio-container">
+                <div class="radio-row">
+                    <label for="debit" class="debtCredOption">Debit</label>
+                    <input type="radio" id="debit" name="debtCredOption" value="D">
+                </div>
+                <div class="radio-row">
+                    <label for="credit" class="debtCredOption">Credit</label>
+                    <input type="radio" id="credit" name="debtCredOption" value="C">
+                </div>
+            </div>
+            <input type='button' class='ledgerBack' value='Back'>
+            <button type="submit" name="addLedgerSubmit">Add</button>
+        </div>
+    </form>
+</div>
 <script src="../formShow.js"></script>
 </body>
 </html>
