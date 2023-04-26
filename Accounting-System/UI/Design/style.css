@@ -259,7 +259,6 @@ input[type="text"] {
 }
 
 .formContents label {
-    display: flex;
     font-size: 16px;
     align-self: flex-start;
 }
@@ -284,8 +283,6 @@ input[type="date"] {
 }
 
 input[type="radio"] {
-    -webkit-appearance: none;
-    appearance: none;
     border-radius: 15px;
     border: 2px solid #ccc;
     outline: none;
@@ -305,27 +302,11 @@ input[type="radio"]:focus {
     margin-bottom: 10px;
 }
 
-.radio-container {
-    display: flex;
-    align-items: flex-start;
-}
-
-.radio-row {
-    display: flex;
-    align-items: flex-start;
-}
-
-.radio-row label {
-    font-size: 16px;
-}
-
 #debit {
     margin-right: 5px;
     padding: 12px 12px;
-    order: 1;
 }
 
 #credit {
     padding: 12px 12px;
-    order: 2;
 }

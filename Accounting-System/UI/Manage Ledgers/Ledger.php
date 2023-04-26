@@ -35,15 +35,11 @@
             <label for="amount">Amount:</label>
             <input type="text" id="amount" name="amount" value="0.00">
             <label class="transactionTypeLabel">Transaction Type:</label>
-            <div class="radio-container">
-                <div class="radio-row">
-                    <label for="debit" class="debtCredOption">Debit</label>
-                    <input type="radio" id="debit" name="debtCredOption" value="D">
-                </div>
-                <div class="radio-row">
-                    <label for="credit" class="debtCredOption">Credit</label>
-                    <input type="radio" id="credit" name="debtCredOption" value="C">
-                </div>
+            <div style="display: flex;">
+                <label for="debit" class="debtCredOption">Debit</label>
+                <input type="radio" id="debit" name="debtCredOption" value="D">
+                <label for="credit" class="debtCredOption">Credit</label>
+                <input type="radio" id="credit" name="debtCredOption" value="C">
             </div>
             <input type='button' class='ledgerBack' value='Back'>
             <button type="submit" name="addLedgerSubmit">Add</button>
