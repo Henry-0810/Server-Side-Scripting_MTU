@@ -55,6 +55,6 @@
     </form>
 </div>
 
-<script src="../formShow.js"></script>
+<script src="employee.js"></script>
 </body>
 </html>

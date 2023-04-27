@@ -3,7 +3,7 @@ require_once '../db_Connect.php';
 function getEmployeeInfo($employeeNo): array
 {
     $pdo = db_connect();
-    $sql = "SELECT * FROM employee WHERE employee_NO = :employeeNo";
+    $sql = "SELECT * FROM employees WHERE employee_NO = :employeeNo";
 
     $result = $pdo->prepare($sql);
     if(isset($employeeNo)){
@@ -29,7 +29,7 @@ function getEmployeeInfo($employeeNo): array
 }
 function getEmployeeName($employeeNo){
     $pdo = db_connect();
-    $sql = "SELECT employee_Name FROM employee WHERE employee_NO = ?";
+    $sql = "SELECT employee_Name FROM employees WHERE employee_NO = ?";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array($employeeNo));
@@ -63,7 +63,7 @@ if (isset($_POST['updEmpSubmit'])) {
     if (empty($errorMsg)) {
         $pdo = db_connect();
 
-        $sql = "UPDATE employee SET Job = ?, Age = ?, Salary = ?, dept_ID = ? WHERE employee_NO = ?";
+        $sql = "UPDATE employees SET Job = ?, Age = ?, Salary = ?, dept_ID = ? WHERE employee_NO = ?";
         $stmt = $pdo->prepare($sql);
         $values = array($job, $age, $salary, $depID, $_POST['employeeID']);
         $stmt->execute($values);

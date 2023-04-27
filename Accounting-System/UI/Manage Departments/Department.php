@@ -49,7 +49,7 @@
         </div>
     </form>
 </div>
-<script src="../formShow.js"></script>
+<script src="department.js"></script>
 </body>
 </html>
 

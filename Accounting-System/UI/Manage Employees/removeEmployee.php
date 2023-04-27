@@ -5,7 +5,7 @@ function deleteEmployee($employeeNo): void
 {
     $pdo = db_connect();
 
-    $sql = "DELETE FROM Employee WHERE employee_NO = :employeeNo";
+    $sql = "DELETE FROM Employees WHERE employee_NO = :employeeNo";
 
     $result = $pdo->prepare($sql);
     $result->bindValue(':employeeNo', $employeeNo);

@@ -14,7 +14,7 @@
     <button type="button" class="ledgerBtn" id="addLedger">Add Ledger</button>
     <input class="searchBar" type="text" id="userInput" placeholder="Search for desired keyword...">
     <table>
-        <tr><th>Ledger ID</th><th>Name</th><th>Created On</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
+        <tr><th>Date</th><th>Ledger ID</th><th>Particular</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
         <?php include_once 'showLedgerDetails.php';?>
     </table>
 </form>
@@ -23,11 +23,13 @@
     <form id="addLedgerForm" action="addLedger.php" method="post" class="ledgerForm">
         <div class="formContents">
             <p>Add Ledger</p>
-            <label for="addLedgerName">Department Name:</label>
-            <input type="text" id="addLedgerName" name="addLedgerName" required>
+            <label for="addLedgerParticular">Particulars:</label>
+            <input type="text" id="addLedgerParticular" name="addLedgerParticular" required>
             <label for="ledgerDate">Created On:</label>
             <input type="date" id="ledgerDate" name="createdOn" required><br>
-            <label for="deptNo">Select department id:</label>
+            <label for="ledgerTime" style="margin-top: -10px;">Time:</label>
+            <input type="time" id="ledgerTime" name="time" required>
+            <label for="deptNo" style="margin-top: 5px;">Select department id:</label>
             <select id="deptNo" name="deptNo" style="width: 300px;">
                 <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
                 <?php include_once '../Manage Departments/updateDepartment.php'; getDeptDetails();?>
@@ -58,6 +60,6 @@
         </div>
     </form>
 </div>
-<script src="../formShow.js"></script>
+<script src="ledger.js"></script>
 </body>
 </html>

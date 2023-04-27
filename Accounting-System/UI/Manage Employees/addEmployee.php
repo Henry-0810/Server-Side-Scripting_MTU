@@ -43,7 +43,7 @@ if(isset($_POST['addEmpSubmit'])) {
 
         $pdo = db_connect();
 
-        $sql = "INSERT INTO employee (employee_Name,Job, Age, Salary, dept_ID) VALUES(?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO employees (employee_Name,Job, Age, Salary, dept_ID) VALUES(?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
 

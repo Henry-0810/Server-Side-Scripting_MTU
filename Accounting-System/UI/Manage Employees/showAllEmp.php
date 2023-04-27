@@ -4,7 +4,7 @@ include_once '../Manage Departments/updateDepartment.php';
 
 $pdo = db_connect();
 
-$sql = "SELECT * FROM employee";
+$sql = "SELECT * FROM employees";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
