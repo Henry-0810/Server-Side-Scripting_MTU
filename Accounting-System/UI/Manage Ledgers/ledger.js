@@ -23,16 +23,18 @@ $('#addPayroll').on('click',function(){
     $('#addLedgerParticular').val("Monthly Payroll");
     $('#deptNo').on('change', function() {
         let deptID = $('#deptNo').val();
+        console.log(deptID);
         if(deptID !== ' ') {
             $.ajax({
                 method: 'POST',
-                url: 'transaction.php',
+                url: 'addLedger.php',
                 dataType: 'json',
                 data: {
                     functionName: 'monthlyPay', deptID: deptID
                 },
                 success: function (response) {
-                    $('#addLedgerAmount').val(response);
+                    console.log(response);
+                    $('#amount').val(response);
                 },
                 error: function (xhr, status, error) {
                     console.log('Error', error);
@@ -44,7 +46,7 @@ $('#addPayroll').on('click',function(){
             $('#addLedgerAmount').val('');
         }
     });
-    $('#debit').is(':checked');
+    $('#debit').prop('checked', true);
 });
 
 $('.ledgerBack').on('click', function () {
