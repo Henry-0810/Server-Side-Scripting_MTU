@@ -11,9 +11,11 @@ $stmt->execute();
 
 while($row = $stmt->fetch()){
     $deptID = $row['dept_ID'];
-    echo '<tr><td>'.$row['created_On'].'</td><td>'.$row['ledger_ID'].'</td><td>'.$row['ledger_Particulars'].'</td><td>'.
+    $date = substr($row['created_On'],0, 10);
+    $time = substr($row['created_On'],11, 15);
+    echo '<tr><td>'.$date.'</td><td>'.$time.'</td><td>'.$row['ledger_ID'].'</td><td>'.$row['ledger_Particulars'].'</td><td>'.
         getDeptName($deptID).'</td><td>'.$row['amount'].'</td><td>'.$row['transaction_type'].'</td>'.
-        '<td><button type="button" name="updLedgerBtn" class="table-btn" data-id='.$row['leger_ID'].'>Update</button></td></tr>';
+        '<td><button type="button" name="updLedgerBtn" class="table-btn" data-id='.$row['ledger_ID'].'>Update</button></td></tr>';
 }
 
 $pdo = null;

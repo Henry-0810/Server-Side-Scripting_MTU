@@ -5,16 +5,38 @@
     <title>Employee</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="../Design/style.css">
+    <style>
+        .addIcon {
+            background-image: url("../Design/Icons/plus.ico");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-left: 20px;
+        }
+        .addPay {
+            background-image: url("../Design/Icons/payroll.svg");
+            background-repeat: no-repeat;
+            background-size: 22px;
+            padding:4px 0 0 25px;
+        }
+        .addIncome {
+            background-image: url("../Design/Icons/income.svg");
+            background-repeat: no-repeat;
+            background-size: 24px;
+            padding:4px 0 0 25px;
+        }
+    </style>
 </head>
 <body>
 <div id="overlay"></div>
 <?php include '../Design/navigationBar.php'; ?>
 <form id="showLedgerForm" class="ledgerTable" style="display: block">
     <p>Ledger details</p>
-    <button type="button" class="ledgerBtn" id="addLedger">Add Ledger</button>
+    <button type="button" class="ledgerBtn" id="addLedger"><i class="addIcon"></i>Add Ledger</button>
+    <button type="button" class="ledgerBtn" id="addPayroll"><i class="addPay"></i>Add Monthly Payroll</button>
+    <button type="button" class="ledgerBtn" id="addIncome"><i class="addIncome"></i>Add Monthly Income</button>
     <input class="searchBar" type="text" id="userInput" placeholder="Search for desired keyword...">
     <table>
-        <tr><th>Date</th><th>Ledger ID</th><th>Particular</th><th>Department ID</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
+        <tr><th>Date</th><th>Time</th><th>Ledger ID</th><th>Particular</th><th>Department</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
         <?php include_once 'showLedgerDetails.php';?>
     </table>
 </form>

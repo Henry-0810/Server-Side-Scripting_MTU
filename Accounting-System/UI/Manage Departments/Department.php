@@ -9,6 +9,12 @@
         .formContents label {
             flex-direction: column;
         }
+        .addIcon {
+            background-image: url("../Design/Icons/plus.ico");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -16,7 +22,7 @@
 <?php include "../Design/navigationBar.php";?>
 <form id="showDeptForm" class="deptTable" style="display: block">
     <p>Department details</p>
-    <button type="button" id="addDept" class="deptBtn">Add Department</button>
+    <button type="button" id="addDept" class="deptBtn"><i class="addIcon"></i> Department</button>
     <table>
         <tr><th>Department ID</th><th>Department Name</th><th>Description</th><th>Department Balance</th><th>Edit</th></tr>
         <?php require_once "showAllDept.php";?>

@@ -1,3 +1,4 @@
+//Learn some basic jquery from https://jquery.com/
 $('#addDept').on('click',function(){
     $('#addDeptForm').show();
     $('#overlay').addClass('overlay');
