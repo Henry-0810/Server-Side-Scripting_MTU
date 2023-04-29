@@ -19,21 +19,17 @@ function getDepartmentName(): void
     $pdo = null;
 }
 
+$error_msg = "";
 if(isset($_POST['addEmpSubmit'])) {
     $name = $_POST['addEmpName'];
     $job = $_POST['addEmpJob'];
     $age = $_POST['addEmpAge'];
     $salary = $_POST['addEmpSalary'];
     $deptID = $_POST['departmentDetails'];
-    $error_msg = '';
 
-    if (validateName($name) != "Input correct") {
-        $error_msg .= validateName($name);
-    }
+    $error_msg .= validateName($name);
 
-    if (validateEmployeeInputs($age, $salary) != "All inputs correct!") {
-        $error_msg .= validateEmployeeInputs($age, $salary);
-    }
+    $error_msg .= validateEmployeeInputs($age, $salary);
 
     if(!isset($_POST['departmentDetails'])){
         $error_msg .= "Department not selected!";

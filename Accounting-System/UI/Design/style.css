@@ -139,7 +139,7 @@ select {
     width: 100%;
     height: 32px;
     box-sizing: border-box;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 option {
@@ -246,7 +246,6 @@ label {
 
 input[type="text"] {
     width: 95%;
-    padding: 8px;
     margin: 5px 0;
     border: none;
     border-radius: 4px;
@@ -267,9 +266,16 @@ input[type="text"] {
     margin-left: 5px;
 }
 
-.formContents input[type="text"] {
+.formContents input {
     display: flex;
     font-size: 14px;
+    padding: 7px;
+}
+
+.formContents input.description {
+    display: inline-block;
+    width: 95%;
+    resize: vertical;
 }
 
 .formContents button[type="submit"] {
@@ -277,20 +283,18 @@ input[type="text"] {
 }
 
 input[type="date"] {
+    padding-left: 5px;
     background-color: #f0f0f0;
     color: #000000;
-    height: 34px;
-    width: 50%;
     border: none;
     border-radius: 4px;
     align-self: flex-start;
 }
 
 input[type="time"] {
+    padding-left: 5px;
     background-color: #f0f0f0;
     color: #000000;
-    height: 34px;
-    width: 50%;
     border: none;
     border-radius: 4px;
     align-self: flex-start;

@@ -24,6 +24,20 @@
             background-size: 24px;
             padding:4px 0 0 25px;
         }
+        .searchBar{
+            background-image: url("../Design/Icons/searchIcon.svg");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: 5px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;x
+        }
+        .editIcon {
+            background-image: url("../Design/Icons/editIcon.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-left: 15px;
+        }
     </style>
 </head>
 <body>
@@ -34,8 +48,8 @@
     <button type="button" class="ledgerBtn" id="addLedger"><i class="addIcon"></i>Add Ledger</button>
     <button type="button" class="ledgerBtn" id="addPayroll"><i class="addPay"></i>Add Monthly Payroll</button>
     <button type="button" class="ledgerBtn" id="addIncome"><i class="addIncome"></i>Add Monthly Income</button>
-    <input class="searchBar" type="text" id="userInput" placeholder="Search for desired keyword...">
-    <table>
+    <input class="searchBar" type="text" id="searchLedger" placeholder="Search for desired particular...">
+    <table id="ledgerTable">
         <tr><th>Date</th><th>Time</th><th>Ledger ID</th><th>Particular</th><th>Department</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
         <?php include_once 'showLedgerDetails.php';?>
     </table>
@@ -48,9 +62,9 @@
             <label for="addLedgerParticular">Particulars:</label>
             <input type="text" id="addLedgerParticular" name="addLedgerParticular" required>
             <label for="ledgerDate">Created On:</label>
-            <input type="date" id="ledgerDate" name="createdOn" required><br>
-            <label for="ledgerTime" style="margin-top: -10px;">Time:</label>
-            <input type="time" id="ledgerTime" name="time" required>
+            <input type="date" id="ledgerDate" name="createdOn" required>
+            <label for="ledgerTime" style="margin-top: 5px;">Time:</label>
+            <input type="time" id="ledgerTime" name="time" style="height: 18px;" required>
             <label for="deptNo" style="margin-top: 5px;">Select department id:</label>
             <select id="deptNo" name="deptNo" style="width: 300px;">
                 <option disabled="disabled" selected="selected" style="display:none;" value="">Choose a Department Number</option>
@@ -65,7 +79,7 @@
                 <label for="credit" class="debtCredOption">Credit</label>
                 <input type="radio" id="credit" name="debtCredOption" value="C">
             </div>
-            <input type='button' class='ledgerBack' value='Back'>
+            <Button type='button' class='ledgerBack'>Back</Button>
             <button type="submit" name="addLedgerSubmit">Add</button>
         </div>
     </form>
@@ -77,7 +91,7 @@
             <p>Selected Ledger details</p>
             <div id="updLedgerContents" style="display: none">
             </div>
-            <input type='button' class='ledgerBack' value='Back'>
+            <Button type='button' class='ledgerBack'>Back</Button>
             <button type='submit' name='updLedgerSubmit'>Update</button>
         </div>
     </form>

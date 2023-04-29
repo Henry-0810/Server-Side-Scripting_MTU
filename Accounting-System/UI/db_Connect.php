@@ -18,14 +18,14 @@ function errorMsg($e): void
 function validateEmployeeInputs($age,$salary): string
 {
     if($age < 18 || $age > 65) {
-        return "Age should be between 18 and 65";
+        return "Age should be between 18 and 65\\n";
     }
 
     if($salary < 3500) {
-        return "Salary should be greater than 3500";
+        return "Salary should be greater than 3500\\n";
     }
 
-    return "All inputs correct!";
+    return "";
 }
 
 function validateName($name): string
@@ -33,5 +33,5 @@ function validateName($name): string
     if (!preg_match("/^[a-zA-Z\s]+$/", $name)){
         return "Invalid Name";
     }
-    return "Input correct";
+    return "";
 }

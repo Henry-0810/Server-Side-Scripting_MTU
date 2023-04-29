@@ -12,6 +12,26 @@
             background-size: contain;
             padding-left: 25px;
         }
+        .searchBar{
+            background-image: url("../Design/Icons/searchIcon.svg");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: 5px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+        }
+        .editIcon {
+            background-image: url("../Design/Icons/editIcon.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-left: 15px;
+        }
+        .deleteIcon {
+            background-image: url("../Design/Icons/removeIcon.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding: 1.5px 3px 3px 15px;
+        }
     </style>
 </head>
 <body>
@@ -20,7 +40,8 @@
 <form id="showEmpForm" class="employeeForm">
     <p>Employee details</p>
     <button type="button" id="addEmployee" class="employeeBtn"><i class="addPeopleIcon" ></i>Add Employee</button>
-    <table>
+    <input class="searchBar" type="text" id="searchEmpName" placeholder="Search for name...">
+    <table id="EmpTable">
         <tr><th>Employee No</th><th>Employee Name</th><th>Job</th><th>Age</th><th>Salary</th><th>Department</th><th>Choose</th></tr>
         <?php include_once 'showAllEmp.php'; ?>
     </table>
@@ -44,7 +65,7 @@
                 <option disabled="disabled" selected="selected" style="display:none;" value="">Select an option</option>
                 <?php getDepartmentName(); ?>
             </select><br>
-            <input type='button' class='employeeBack' value='Back'>
+            <Button type='button' class='employeeBack'>Back</Button>
             <button type="submit" name="addEmpSubmit">Add</button>
         </div>
     </form>
@@ -57,7 +78,7 @@
             <p>Selected employee details</p>
             <div id="updEmployeeContents" style="display: none">
             </div>
-            <input type='button' class='employeeBack' value='Back'>
+            <Button type='button' class='employeeBack'>Back</Button>
             <button type='submit' name='updEmpSubmit'>Update</button>
         </div>
     </form>

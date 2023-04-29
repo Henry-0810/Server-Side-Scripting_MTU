@@ -28,13 +28,13 @@ function getDeptDetails() {
                 console.log(response);
                 let details = "";
                 details += "<label for='deptID'>Department ID:</label>";
-                details += "<input type='text' id='deptID' name='deptID' value ='" + response['deptID'] + "' readonly><br>";
-                details += "<label for='deptName'>Age:</label>";
-                details += "<input type='text' id='deptName' name='deptName' value = '" + response['deptName'] + "' readonly><br>";
+                details += "<input type='text' id='deptID' name='deptID' value ='" + response['deptID'] + "' readonly>";
+                details += "<label for='deptName'>Department Name:</label>";
+                details += "<input type='text' id='deptName' name='deptName' value = '" + response['deptName'] + "' readonly>";
                 details += "<label for='updDesc'>Department description:</label>";
-                details += "<input type='text' id='updDesc' name='updDesc' value ='" + response['deptDesc'] + "' required><br>";
-                details += "<label for='updBal'>Age:</label>";
-                details += "<input type='text' id='updBal' name='updBal' value = '" + response['deptBal'] + "' required><br>";
+                details += "<input type='text' id='updDesc' name='updDesc' class='description' value ='" + response['deptDesc'] + "' required>";
+                details += "<label for='updBal'>Balance:</label>";
+                details += "<input type='text' id='updBal' name='updBal' value = '" + response['deptBal'] + "' required>";
                 $('#updDeptContents').html(details).show();
             },
             error: function (xhr, status, error) {

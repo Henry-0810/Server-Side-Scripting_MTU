@@ -1,5 +1,5 @@
 <?php
-require_once '../db_Connect.php';
+require_once 'db_Connect.php';
 
 $pdo = db_connect();
 $sql = "SELECT dept_ID, dept_Name FROM departments";

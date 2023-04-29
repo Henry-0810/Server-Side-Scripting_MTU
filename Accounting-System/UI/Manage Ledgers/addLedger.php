@@ -1,6 +1,7 @@
 <?php
 require_once '../db_Connect.php';
 require_once 'transaction.php';
+require_once 'ledgerFormValidation.php';
 
 //gets the employee's total wages for a department
 if (isset($_POST['functionName']) && $_POST['functionName'] == 'monthlyPay') {
@@ -10,6 +11,15 @@ if (isset($_POST['functionName']) && $_POST['functionName'] == 'monthlyPay') {
     exit();
 }
 
+//gets the employee's total wages for a department
+if (isset($_POST['functionName']) && $_POST['functionName'] == 'monthlyIncome') {
+    $deptID = $_POST['deptID'];
+    $payroll = monthlyIncome($deptID);
+    echo json_encode($payroll);
+    exit();
+}
+
+$error_msg = '';
 if(isset($_POST['addLedgerSubmit'])) {
     $particular = $_POST['addLedgerParticular'];
     $date = $_POST['createdOn'];
@@ -17,30 +27,8 @@ if(isset($_POST['addLedgerSubmit'])) {
     $deptID = $_POST['deptNo'];
     $amount = $_POST['amount'];
     $transaction = $_POST['debtCredOption'];
-    $error_msg = '';
 
-    if($date > date("Y-m-d")){
-        $error_msg .= "Date cannot be in the future!\\n";
-    }
-
-    if($date == date("Y-m-d") && $time > date("H:i")){
-        $error_msg .= "Time cannot be in the future!\\n";
-    }
-
-    if(!isset($_POST['deptNo'])){
-        $error_msg .= "Department not selected!\\n";
-    }
-
-    if(!is_numeric($amount)){
-        $error_msg .= "Amount must be a number!\\n";
-    }
-    else if($amount <= 0){
-        $error_msg .= "Amount must be positive!\\n";
-    }
-
-    if($transaction == 'C' && $amount > getDeptBal($deptID)){
-        $error_msg .= "Insufficient balance!\\n";
-    }
+    $error_msg .= validateLedger($date, $time, $deptID, $amount, $transaction);
 
     if (empty($error_msg)) {
 
@@ -58,6 +46,7 @@ if(isset($_POST['addLedgerSubmit'])) {
             "\\nTransaction type: " . $transaction . "\\nSuccessfully added to database!!!");
         echo $data;
 
+        //transaction
         $deptBal = getDeptBal($deptID);
 
         if($transaction == 'D'){
@@ -68,6 +57,7 @@ if(isset($_POST['addLedgerSubmit'])) {
         }
 
         updateDeptBal($deptID, $deptBal);
+
         echo "<script>alert('$data'); window.location.href = 'Ledger.php'; </script>";
     } else {
         echo "<script>alert('$error_msg'); window.history.back(); </script>";
@@ -81,7 +71,7 @@ function monthlyPay($deptID): float
     $sql = "SELECT SUM(Salary) FROM employees WHERE dept_ID = ?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$deptID]);
+    $stmt->execute(array($deptID));
 
     $payroll= (double) $stmt->fetchColumn();
     $pdo = null;
@@ -96,7 +86,7 @@ function monthlyIncome($deptID): float
     $sql = "SELECT dept_Bal FROM departments WHERE dept_ID = ?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$deptID]);
+    $stmt->execute(array($deptID));
 
     $pdo = null;
 

@@ -28,17 +28,17 @@ function getEmployeeDetails() {
                 console.log(response);
                 let details = "";
                 details += "<label for='employeeID'>Employee ID:</label>";
-                details += "<input type='text' id='employeeID' name='employeeID' value ='" + response['id'] + "' readonly><br>";
+                details += "<input type='text' id='employeeID' name='employeeID' value ='" + response['id'] + "' readonly>";
                 details += "<label for='employeeName'>Employee Name:</label>";
-                details += "<input type='text' id='employeeName' name='employeeName' value ='" + response['name'] + "' readonly><br>";
+                details += "<input type='text' id='employeeName' name='employeeName' value ='" + response['name'] + "' readonly>";
                 details += "<label for='updJob'>Job:</label>";
-                details += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required><br>";
+                details += "<input type='text' id='updJob' name='updJob' value ='" + response['job'] + "' required>";
                 details += "<label for='updAge'>Age:</label>";
-                details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required><br>";
+                details += "<input type='text' id='updAge' name='updAge' value = '" + response['age'] + "' required>";
                 details += "<label for='updSalary'>Salary:</label>";
-                details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required><br>";
+                details += "<input type='text' id='updSalary' name='updSalary'' value = '" + response['salary'] + "' required>";
                 $.ajax({
-                    url: 'getDeptDetails.php',
+                    url: '../getDeptDetails.php',
                     type: 'POST',
                     dataType: 'json',
                     success: function (deptDetails){
@@ -100,3 +100,10 @@ function promptDialog() {
         });
     }
 }
+//Search bar algorithm
+$('#searchEmpName').on('keyup', function() {
+    let value = $(this).val().toLowerCase();
+    $('#EmpTable tr').filter(function(){
+        $(this).toggle($(this).children("td:eq(1)").text().toLowerCase().indexOf(value) > -1);
+    });
+});

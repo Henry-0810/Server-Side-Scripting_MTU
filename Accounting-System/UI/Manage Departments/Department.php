@@ -15,6 +15,12 @@
             background-size: contain;
             padding-left: 20px;
         }
+        .editIcon {
+            background-image: url("../Design/Icons/editIcon.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-left: 15px;
+        }
     </style>
 </head>
 <body>
@@ -37,7 +43,7 @@
             <label>Department Name: <input type="text" id="addDeptName" name="addDeptName" required></label>
             <label>Description: <input type="text" id="addDeptDesc" name="addDeptDesc" required></label>
             <label>Department Balance: <input type="text" id="addDeptBal" name="addDeptBal" value="0.00"><br></label>
-            <input type='button' class='deptBack' value='Back'>
+            <Button type='button' class='deptBack'>Back</Button>
             <button type="submit" name="addDeptSubmit">Add</button>
         </div>
     </form>
@@ -50,7 +56,7 @@
             <p>Selected Department details</p>
             <div id="updDeptContents" style="display: none">
             </div>
-            <input type='button' class='deptBack' value='Back'>
+            <Button type='button' class='deptBack'>Back</Button>
             <button type='submit' name='updDeptSubmit'>Update</button>
         </div>
     </form>
