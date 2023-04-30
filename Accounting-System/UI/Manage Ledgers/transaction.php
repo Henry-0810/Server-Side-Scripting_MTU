@@ -8,7 +8,7 @@ function getDeptBal($deptID): float
     $sql = "SELECT dept_Bal FROM departments WHERE dept_ID = ?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$deptID]);
+    $stmt->execute(array($deptID));
 
     $pdo = null;
 
@@ -22,7 +22,7 @@ function updateDeptBal($deptID, $deptBal): void
     $sql = "UPDATE departments SET dept_Bal = ? WHERE dept_ID = ?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$deptBal, $deptID]);
+    $stmt->execute(array($deptBal, $deptID));
 
     $pdo = null;
 }

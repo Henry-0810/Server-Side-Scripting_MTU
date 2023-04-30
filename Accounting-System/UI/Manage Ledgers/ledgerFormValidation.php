@@ -1,5 +1,5 @@
 <?php
-function validateLedger($date, $time, $deptID, $amount, $transaction): string
+function validateLedger($date, $time, $deptID, $validatingAmount, $initialAmount, $transaction): string
 {
     $error_msg = "";
 
@@ -15,14 +15,14 @@ function validateLedger($date, $time, $deptID, $amount, $transaction): string
         $error_msg .= "Department not selected!\\n";
     }
 
-    if(!is_numeric($amount)){
+    if(!is_numeric($validatingAmount)){
         $error_msg .= "Amount must be a number!\\n";
     }
-    else if($amount <= 0){
+    else if($validatingAmount <= 0){
         $error_msg .= "Amount must be positive!\\n";
     }
 
-    if($transaction == 'C' && $amount > getDeptBal($deptID)){
+    if($transaction == 'C' && $validatingAmount > getDeptBal($deptID) + $initialAmount){
         $error_msg .= "Insufficient balance!\\n";
     }
 

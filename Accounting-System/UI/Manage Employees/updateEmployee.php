@@ -76,7 +76,7 @@ if (isset($_POST['updEmpSubmit'])) {
             "\\nDepartment ID: " . $depID);
 
         $pdo = null;
-        echo "<script>alert('$data'); window.location.href = 'Employee.php'; </script>";
+        echo "<script>console.log('$data'); window.location.href = 'Employee.php'; </script>";
     } else {
         echo "<script>alert('$errorMsg'); window.history.back(); </script>";
     }

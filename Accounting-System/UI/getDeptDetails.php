@@ -7,10 +7,12 @@ $sql = "SELECT dept_ID, dept_Name FROM departments";
 $result = $pdo->prepare($sql);
 $result->execute();
 
+//initialize arrays
 $deptIDs = array();
 $deptNames = array();
 $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 foreach ($rows as $row){
+    //add each row to the arrays
     $deptIDs[] = $row['dept_ID'];
     $deptNames[] = $row['dept_Name'];
 }

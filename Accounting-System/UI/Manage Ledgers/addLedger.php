@@ -28,7 +28,7 @@ if(isset($_POST['addLedgerSubmit'])) {
     $amount = $_POST['amount'];
     $transaction = $_POST['debtCredOption'];
 
-    $error_msg .= validateLedger($date, $time, $deptID, $amount, $transaction);
+    $error_msg .= validateLedger($date, $time, $deptID, $amount, 0, $transaction);
 
     if (empty($error_msg)) {
 
@@ -49,16 +49,11 @@ if(isset($_POST['addLedgerSubmit'])) {
         //transaction
         $deptBal = getDeptBal($deptID);
 
-        if($transaction == 'D'){
-            $deptBal += $amount;
-        }
-        else if($transaction == 'C'){
-            $deptBal -= $amount;
-        }
+        $transaction == 'D' ? $deptBal += $amount : $deptBal -= $amount;
 
         updateDeptBal($deptID, $deptBal);
 
-        echo "<script>alert('$data'); window.location.href = 'Ledger.php'; </script>";
+        echo "<script>console.log('$data'); window.location.href = 'Ledger.php'; </script>";
     } else {
         echo "<script>alert('$error_msg'); window.history.back(); </script>";
     }

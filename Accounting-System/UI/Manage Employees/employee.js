@@ -72,6 +72,7 @@ function getEmployeeDetails() {
     }
 }
 
+//https://stackoverflow.com/questions/6384251/intercepting-a-jquery-ajax-call-with-confirm
 $("Button[name='rmvEmpBtn']").on('click', promptDialog);
 function promptDialog() {
     console.log("calling this function");

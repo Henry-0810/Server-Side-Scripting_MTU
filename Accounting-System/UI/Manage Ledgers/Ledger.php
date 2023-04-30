@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Employee</title>
+    <title>Ledger</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="../Design/style.css">
     <style>
@@ -48,6 +48,7 @@
     <button type="button" class="ledgerBtn" id="addLedger"><i class="addIcon"></i>Add Ledger</button>
     <button type="button" class="ledgerBtn" id="addPayroll"><i class="addPay"></i>Add Monthly Payroll</button>
     <button type="button" class="ledgerBtn" id="addIncome"><i class="addIncome"></i>Add Monthly Income</button>
+    <button type="button" class="ledgerBtn" id="uploadLedgerBtn"><i class="addIcon"></i>Upload Ledger</button>
     <input class="searchBar" type="text" id="searchLedger" placeholder="Search for desired particular...">
     <table id="ledgerTable">
         <tr><th>Date</th><th>Time</th><th>Ledger ID</th><th>Particular</th><th>Department</th><th>Amount</th><th>Transaction Type</th><th>Edit</th></tr>
@@ -79,7 +80,7 @@
                 <label for="credit" class="debtCredOption">Credit</label>
                 <input type="radio" id="credit" name="debtCredOption" value="C">
             </div>
-            <Button type='button' class='ledgerBack'>Back</Button>
+            <button type='button' class='ledgerBack'>Back</button>
             <button type="submit" name="addLedgerSubmit">Add</button>
         </div>
     </form>
@@ -93,6 +94,18 @@
             </div>
             <Button type='button' class='ledgerBack'>Back</Button>
             <button type='submit' name='updLedgerSubmit'>Update</button>
+        </div>
+    </form>
+</div>
+
+<div class="emp-container">
+    <form id="uploadLedgerForm" action="addLedgerCsv.php" method="post" enctype="multipart/form-data" class="ledgerForm">
+        <div class="formContents">
+            <p>Upload ledger records</p>
+            <label for="uploadLedger">Upload File: </label>
+            <input type="file" accept=".csv" id="uploadLedger" name="uploadLedger">
+            <button type='button' class='ledgerBack'>Back</button>
+            <button type="submit" name="uploadLedgerSubmit">Upload</button>
         </div>
     </form>
 </div>

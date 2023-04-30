@@ -10,9 +10,11 @@ $('.deptBack').on('click', function () {
 
 $("Button[name='updDeptBtn']").on('click', getDeptDetails);
 
-
+//Get department details without refreshing the page or clicking a button
+//ajax learned from here https://code.tutsplus.com/tutorials/how-to-use-ajax-in-php-and-jquery--cms-32494
 function getDeptDetails() {
     console.log("calling this function");
+    //its custom attribute is data-id
     let deptNo = $(this).data('id');
     $('#updDeptForm').show();
     $('#overlay').addClass('overlay');
@@ -33,7 +35,7 @@ function getDeptDetails() {
                 details += "<input type='text' id='deptName' name='deptName' value = '" + response['deptName'] + "' readonly>";
                 details += "<label for='updDesc'>Department description:</label>";
                 details += "<input type='text' id='updDesc' name='updDesc' class='description' value ='" + response['deptDesc'] + "' required>";
-                details += "<label for='updBal'>Balance:</label>";
+                details += "<label for='updBal'>Department Balance:</label>";
                 details += "<input type='text' id='updBal' name='updBal' value = '" + response['deptBal'] + "' required>";
                 $('#updDeptContents').html(details).show();
             },

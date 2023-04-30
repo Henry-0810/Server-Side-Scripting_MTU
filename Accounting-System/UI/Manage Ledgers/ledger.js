@@ -44,6 +44,11 @@ $('#addIncome').on('click',function(){
     $('#debit').prop('checked', true);
 });
 
+$('#uploadLedgerBtn').on('click', function(e){
+    $('#uploadLedgerForm').show();
+    $('#overlay').addClass('overlay');
+});
+
 function showLedgerForm(particular, functionName) {
     console.log("clicked");
     $('#addLedgerForm').show();
@@ -107,7 +112,7 @@ $("Button[name='updLedgerBtn']").on('click', function(){
                 console.log(response);
                 let details = "";
                 details += "<label for='ledgerID'>Ledger ID:</label>";
-                details += "<input type='text' name='ledgerID' value='" + response['id'] + "'>";
+                details += "<input type='text' name='ledgerID' value='" + response['id'] + "' readonly>";
                 details += "<label for='updLedgerParticular'>Particular:</label>";
                 details += "<input type='text' name='updLedgerParticular' value='" + response['particulars'] + "'>";
                 details += "<label for='updLedgerDate'>Date:</label>";
@@ -154,3 +159,5 @@ $("Button[name='updLedgerBtn']").on('click', function(){
         });
     }
 });
+
+

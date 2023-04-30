@@ -75,23 +75,26 @@ if(isset($_POST['updDeptSubmit'])){
     if(!is_numeric($balance)) {
         $errorMsg .= 'Balance must be a number';
     }
+    else if($balance < 10000){
+        $errorMsg .= "Balance must be more than 10000";
+    }
 
     if(empty($errorMsg)){
         $pdo = db_connect();
 
         $sql = "UPDATE departments SET dept_Desc = ?, dept_Bal = ? WHERE dept_ID = ?";
         $stmt = $pdo->prepare($sql);
-        $values = array($description,$balance,$_POST['deptNo']);
+        $values = array($description,$balance,$_POST['deptID']);
         $stmt->execute($values);
 
-        $name = getDeptName($_POST['deptNo']);
-        $departmentInfo = getDeptInfo($_POST['deptNo']);
+        $name = getDeptName($_POST['deptID']);
+        $departmentInfo = getDeptInfo($_POST['deptID']);
 
         $data = nl2br("Successfully Updated to database!\\nUpdated information shown below:\\nDepartment Name: " .
             $name . "\\nDescription: " . $departmentInfo['deptDesc'] . "\\nBalance: " . $departmentInfo['deptBal']);
 
         $pdo = null;
-        echo "<script>alert('$data'); window.location.href = 'Department.php'; </script>";
+        echo "<script>console.log('$data'); window.location.href = 'Department.php'; </script>";
     }
     else {
         echo "<script>alert('$errorMsg'); window.history.back(); </script>";
